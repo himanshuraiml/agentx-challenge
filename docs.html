@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentX Challenge — Developer Docs</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .docs-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Sidebar Navigation */
+    .docs-sidebar {
+      position: sticky;
+      top: 100px;
+      height: calc(100vh - 140px);
+      overflow-y: auto;
+      padding-right: 1.5rem;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .docs-sidebar-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .docs-nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: var(--transition-fast);
+      display: block;
+    }
+
+    .docs-nav-link:hover {
+      color: var(--primary);
+      padding-left: 4px;
+    }
+
+    .docs-nav-link.active {
+      color: var(--primary);
+      font-weight: 600;
+      border-left: 2px solid var(--primary);
+      padding-left: 10px;
+    }
+
+    /* Main Content Area */
+    .docs-main {
+      min-width: 0;
+    }
+
+    .docs-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: var(--transition-fast);
+    }
+
+    .docs-back-btn:hover {
+      color: var(--text-primary);
+      transform: translateX(-4px);
+    }
+
+    .docs-back-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .docs-header {
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 2rem;
+    }
+
+    .docs-title {
+      font-family: var(--font-title);
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      background: linear-gradient(135deg, #ffffff 40%, #c7d2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .docs-section {
+      margin-bottom: 4.5rem;
+      scroll-margin-top: 100px;
+    }
+
+    .docs-section h2 {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      color: var(--text-primary);
+    }
+
+    .docs-section p {
+      color: var(--text-secondary);
+      line-height: 1.75;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .docs-alert {
+      background: rgba(99, 102, 241, 0.08);
+      border-left: 4px solid var(--primary);
+      border-radius: 0 12px 12px 0;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .docs-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .docs-checklist li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .docs-checklist-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--agriculture);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    pre {
+      background: #05070c;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: #e2e8f0;
+    }
+
+    @media (max-width: 968px) {
+      .docs-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .docs-sidebar {
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-right: 0;
+        padding-bottom: 2rem;
+      }
+
+      .docs-nav-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .docs-nav-link {
+        padding: 0.4rem 0.8rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+      }
+
+      .docs-nav-link.active {
+        border-left: none;
+        background: rgba(99, 102, 241, 0.1);
+        border-color: var(--primary);
+        padding-left: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-dot"></span>
+        AGENT<span>X</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#themes">Themes</a></li>
+        <li><a href="index.html#timeline">Timeline</a></li>
+        <li><a href="index.html#prizes">Prizes</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li>
+          <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" class="btn btn-nav-register" style="text-decoration: none;">Register Now</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Background canvas -->
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="docs-container">
+    <!-- Sidebar left -->
+    <aside class="docs-sidebar">
+      <div class="docs-sidebar-title">Documentation</div>
+      <ul class="docs-nav-list">
+        <li><a href="#intro" class="docs-nav-link active" id="link-intro">1. Introduction</a></li>
+        <li><a href="#concept" class="docs-nav-link" id="link-concept">2. Concept of Agentic AI</a></li>
+        <li><a href="#reasoning" class="docs-nav-link" id="link-reasoning">3. Planning & Reasoning</a></li>
+        <li><a href="#tools" class="docs-nav-link" id="link-tools">4. Tool Integration</a></li>
+        <li><a href="#submission" class="docs-nav-link" id="link-submission">5. Submission Rules</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content right -->
+    <main class="docs-main">
+      <a href="index.html" class="docs-back-btn">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Portal
+      </a>
+
+      <div class="docs-header">
+        <h1 class="docs-title">Developer Documentation</h1>
+      </div>
+
+      <!-- Section 1 -->
+      <section class="docs-section" id="intro">
+        <h2>1. Introduction</h2>
+        <p>
+          Welcome to the developer documentation for the <strong>AgentX Challenge</strong>. This event is an intensive internal hackathon hosted exclusively at <strong>SRMIST Tiruchirappalli</strong> for students across all technical departments.
+        </p>
+        <p>
+          The hackathon is a fast-paced <strong>24-hour sprint</strong> beginning on <strong>October 8</strong> and ending on <strong>October 9</strong>. Teams will compete to design, implement, and deploy autonomous AI Agent architectures addressing critical problems in one of five target domains: Healthcare, Education, Agriculture, Finance, and Smart Cities.
+        </p>
+        <div class="docs-alert">
+          <strong>Key Info:</strong> Make sure you have submitted your final registration on the Google Form before October 8, 2026. Teams should consist of 1 to 4 members.
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="docs-section" id="concept">
+        <h2>2. Concept of Agentic AI</h2>
+        <p>
+          Unlike traditional AI systems that act as single-turn chat completion wrappers, <strong>Agentic AI</strong> systems are designed with autonomy. An agent operates within a cyclic execution sequence commonly referred to as the <strong>Perceive-Plan-Act</strong> loop:
+        </p>
+        <ol style="list-style-type: decimal; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem;">
+          <li><strong>Perceive</strong>: The agent takes a user query or environment telemetry as input.</li>
+          <li><strong>Plan</strong>: The agent breaks the complex query down into smaller sub-tasks, choosing which tools are needed and structuring the execution sequence.</li>
+          <li><strong>Act</strong>: The agent invokes tools (running calculations, searching databases, querying APIs) and processes the results to either output a final response or run another reasoning cycle.</li>
+        </ol>
+        <p>
+          The core differentiator is the agent's ability to recursively review outcomes and correct its path when a tool output indicates an error or a search results in empty outputs.
+        </p>
+      </section>
+
+      <!-- Section-3 -->
+      <section class="docs-section" id="reasoning">
+        <h2>3. Planning & Reasoning</h2>
+        <p>
+          For the AgentX Challenge, your team must implement a robust reasoning mechanism. Common patterns include:
+        </p>
+        <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; display: flex; flex-direction: column; gap: 0.75rem;">
+          <li>
+            <strong>ReAct (Reason + Action)</strong>: For every step, the agent outputs a thought detailing what it plans to do, followed by a specific tool invocation request.
+          </li>
+          <li>
+            <strong>Plan-and-Solve</strong>: The agent generates a complete multi-step roadmap at the beginning of the execution, and then follows it sequentially while adapting to tool results.
+          </li>
+          <li>
+            <strong>Multi-Agent Systems</strong>: Multiple specialized agents (e.g. a research agent, a coder agent, and an editor agent) collaborate via structured messaging boundaries to deliver the final response.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="docs-section" id="tools">
+        <h2>4. Tool Integration</h2>
+        <p>
+          Agents interact with the external world using <strong>Tools</strong>. A tool is a function wrapped in a structured schema that tells the LLM the function name, what it does, and what inputs it accepts.
+        </p>
+        <p>
+          An example of defining a JSON schema for a weather API tool:
+        </p>
+        <pre><code>{
+  "name": "get_weather_data",
+  "description": "Retrieve humidity and temperature forecast for a specific location.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "location": { "type": "string", "description": "City and state name" },
+      "days": { "type": "integer", "description": "Forecast duration" }
+    },
+    "required": ["location"]
+  }
+}</code></pre>
+        <p>
+          Your project will be heavily scored on how well your agent coordinates tool inputs, validates output types, and recovers from network failures during execution.
+        </p>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="docs-section" id="submission">
+        <h2>5. Submission Rules</h2>
+        <p>
+          The build window ends exactly 24 hours after launch. Your submission must include:
+        </p>
+        <ul class="docs-checklist">
+          <li>
+            <svg class="docs-checklist-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span><strong>GitHub Link</strong> containing clean source code, dependencies manifest, and setup documentation.</span>
+          </li>
+          <li>
+            <svg class="docs-checklist-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span><strong>System Diagram</strong> outlining the planning loops, prompt templates, and database tool nodes.</span>
+          </li>
+          <li>
+            <svg class="docs-checklist-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span><strong>Demo Video</strong> (2-minute maximum) showing the agent performing live planning and executing tool calls.</span>
+          </li>
+        </ul>
+        <p>
+          Your submissions will go through <strong>3 rounds of judging</strong> on October 9: Round 1 checking repository codebase quality, Round 2 testing code capability in a sandboxed scenario, and Round 3 evaluating finalists live.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-dot"></span>
+          AGENT<span>X</span>
+        </a>
+        <p>
+          Empowering students to build autonomous systems that solve real-world problems.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html#themes">Themes</a></li>
+          <li><a href="index.html#timeline">Timeline</a></li>
+          <li><a href="index.html#prizes">Prizes</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#">Discord Server</a></li>
+          <li><a href="template.html">Github Template</a></li>
+          <li><a href="docs.html">Developer Docs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AgentX Challenge. All rights reserved.</p>
+      <p>Organized by SRMIST Tiruchirappalli.</p>
+    </div>
+  </footer>
+
+  <!-- Simple script for docs sidebar highlighting -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.docs-section');
+      const navLinks = document.querySelectorAll('.docs-nav-link');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (window.scrollY >= sectionTop - 150) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+  <script src="js/app.js"></script>
+</body>
+</html>

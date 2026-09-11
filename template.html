@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentX Challenge — GitHub Starter Template</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .docs-page-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .docs-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      transition: var(--transition-fast);
+    }
+
+    .docs-back-btn:hover {
+      color: var(--text-primary);
+      transform: translateX(-4px);
+    }
+
+    .docs-back-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .docs-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .docs-title {
+      font-family: var(--font-title);
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      background: linear-gradient(135deg, #ffffff 40%, #c7d2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .docs-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .docs-content {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .docs-section {
+      margin-bottom: 3rem;
+    }
+
+    .docs-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .docs-section h2 {
+      font-family: var(--font-title);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 0.5rem;
+    }
+
+    .docs-section p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Code block styling */
+    pre {
+      background: #05070c;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    .code-comment { color: var(--text-muted); }
+    .code-keyword { color: #f472b6; }
+    .code-string { color: #34d399; }
+    .code-func { color: #60a5fa; }
+    .code-class { color: #a855f7; }
+
+    .file-tree {
+      font-family: var(--font-mono);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px dashed rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1.25rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 1.5rem 0;
+      white-space: pre;
+      overflow-x: auto;
+    }
+
+    .btn-template-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-template-hero svg {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-dot"></span>
+        AGENT<span>X</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html#themes">Themes</a></li>
+        <li><a href="index.html#timeline">Timeline</a></li>
+        <li><a href="index.html#prizes">Prizes</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li>
+          <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" class="btn btn-nav-register" style="text-decoration: none;">Register Now</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Background canvas -->
+  <canvas id="hero-canvas"></canvas>
+
+  <main class="docs-page-container">
+    <a href="index.html" class="docs-back-btn">
+      <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Back to Portal
+    </a>
+
+    <div class="docs-header">
+      <h1 class="docs-title">GitHub Starter Template</h1>
+      <p class="docs-subtitle">
+        Accelerate your build phase. Clone our pre-configured repository containing agentic reasoning skeletons, environment variable configs, and tool-calling helpers.
+      </p>
+    </div>
+
+    <div class="docs-content">
+      <!-- Section 1 -->
+      <section class="docs-section">
+        <h2>Quick Start</h2>
+        <p>
+          We provide a Python starter template that contains a pre-built reasoning loop structure (ReAct pattern) and examples of binding APIs as tools. You can use it as a base for building your hackathon project.
+        </p>
+        <a href="https://github.com/srmist-tiruchi/agentx-starter" target="_blank" class="btn btn-primary btn-template-hero" style="text-decoration: none;">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.435 22 12.017 22 6.484 17.522 2 12 2z" />
+          </svg>
+          Use GitHub Template
+        </a>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="docs-section">
+        <h2>Local Setup</h2>
+        <p>Clone the repository and run the setup scripts using the following command sequences:</p>
+        
+        <pre><code><span class="code-comment"># 1. Clone the template repository</span>
+git clone https://github.com/srmist-tiruchi/agentx-starter.git
+cd agentx-starter
+
+<span class="code-comment"># 2. Set up virtual environment</span>
+python3 -m venv venv
+source venv/bin/activate
+
+<span class="code-comment"># 3. Install requirements</span>
+pip install -r requirements.txt
+
+<span class="code-comment"># 4. Initialize environment configuration</span>
+cp .env.example .env</code></pre>
+
+        <p>
+          Configure the `.env` file with your relevant LLM provider API credentials (e.g. OpenAI API Key, Anthropic, or Groq) to start running queries.
+        </p>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="docs-section">
+        <h2>Template File Structure</h2>
+        <p>The repository layout is organized logically to separate the agent reasoning logic from tools and environments:</p>
+        
+        <div class="file-tree">
+agentx-starter/
+├── config/
+│   └── settings.yaml       # Agent runtime and model hyperparameters
+├── tools/
+│   ├── __init__.py
+│   ├── web_search.py       # Custom search tool integration example
+│   └── database_query.py   # SQL database search tool wrapper
+├── agent/
+│   ├── __init__.py
+│   ├── core.py             # Main ReAct loop execution logic
+│   └── prompt_builder.py   # Context and system prompt templating
+├── .env.example            # Environment variables configuration guide
+├── main.py                 # Application entry point
+├── requirements.txt        # Python dependency manifest
+└── README.md               # Quick setup details
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="docs-section">
+        <h2>Starter Agent skeleton</h2>
+        <p>Here is an excerpt of the base agent execution loop found in <code>agent/core.py</code>:</p>
+        
+        <pre><code><span class="code-keyword">class</span> <span class="code-class">AgentExecutor</span>:
+    <span class="code-keyword">def</span> <span class="code-func">__init__</span>(<span class="code-keyword">self</span>, model, tools):
+        <span class="code-keyword">self</span>.model = model
+        <span class="code-keyword">self</span>.tools = {tool.name: tool <span class="code-keyword">for</span> tool <span class="code-keyword">in</span> tools}
+
+    <span class="code-keyword">def</span> <span class="code-func">run</span>(<span class="code-keyword">self</span>, prompt, max_steps=<span class="code-string">5</span>):
+        history = []
+        <span class="code-keyword">for</span> step <span class="code-keyword">in</span> <span class="code-class">range</span>(max_steps):
+            <span class="code-comment"># 1. Ask the model for thought + action</span>
+            response = <span class="code-keyword">self</span>.model.generate(prompt, history)
+            thought, action, action_input = <span class="code-keyword">self</span>.parse_response(response)
+            <span class="code-class">print</span>(<span class="code-string">f"[Thought] {thought}"</span>)
+            
+            <span class="code-keyword">if</span> <span class="code-keyword">not</span> action:
+                <span class="code-comment"># Final response found</span>
+                <span class="code-keyword">return</span> response
+                
+            <span class="code-comment"># 2. Call the tool</span>
+            <span class="code-class">print</span>(<span class="code-string">f"[Calling Tool] {action} with inputs {action_input}"</span>)
+            tool_output = <span class="code-keyword">self</span>.tools[action].execute(action_input)
+            
+            <span class="code-comment"># 3. Add to history for next reasoning loop</span>
+            history.append({
+                <span class="code-string">"thought"</span>: thought,
+                <span class="code-string">"action"</span>: action,
+                <span class="code-string">"output"</span>: tool_output
+            })</code></pre>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-dot"></span>
+          AGENT<span>X</span>
+        </a>
+        <p>
+          Empowering students to build autonomous systems that solve real-world problems.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html#themes">Themes</a></li>
+          <li><a href="index.html#timeline">Timeline</a></li>
+          <li><a href="index.html#prizes">Prizes</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#">Discord Server</a></li>
+          <li><a href="template.html">Github Template</a></li>
+          <li><a href="docs.html">Developer Docs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AgentX Challenge. All rights reserved.</p>
+      <p>Organized by SRMIST Tiruchirappalli.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
