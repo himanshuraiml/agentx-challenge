@@ -101,7 +101,7 @@
       font-size: 3rem;
       font-weight: 800;
       letter-spacing: -1.5px;
-      background: linear-gradient(135deg, #ffffff 40%, #c7d2fe);
+      background: linear-gradient(135deg, #ffffff 40%, #d9f99d);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 1rem;
@@ -128,7 +128,7 @@
     }
 
     .docs-alert {
-      background: rgba(99, 102, 241, 0.08);
+      background: rgba(182, 242, 58, 0.08);
       border-left: 4px solid var(--primary);
       border-radius: 0 12px 12px 0;
       padding: 1.25rem;
@@ -207,7 +207,7 @@
 
       .docs-nav-link.active {
         border-left: none;
-        background: rgba(99, 102, 241, 0.1);
+        background: rgba(182, 242, 58, 0.1);
         border-color: var(--primary);
         padding-left: 0.8rem;
       }
@@ -244,10 +244,13 @@
       <div class="docs-sidebar-title">Documentation</div>
       <ul class="docs-nav-list">
         <li><a href="#intro" class="docs-nav-link active" id="link-intro">1. Introduction</a></li>
-        <li><a href="#concept" class="docs-nav-link" id="link-concept">2. Concept of Agentic AI</a></li>
-        <li><a href="#reasoning" class="docs-nav-link" id="link-reasoning">3. Planning & Reasoning</a></li>
-        <li><a href="#tools" class="docs-nav-link" id="link-tools">4. Tool Integration</a></li>
-        <li><a href="#submission" class="docs-nav-link" id="link-submission">5. Submission Rules</a></li>
+        <li><a href="#models" class="docs-nav-link" id="link-models">2. Free Models & Colab Setup</a></li>
+        <li><a href="#concept" class="docs-nav-link" id="link-concept">3. Concept of Agentic AI</a></li>
+        <li><a href="#reasoning" class="docs-nav-link" id="link-reasoning">4. Planning & Reasoning</a></li>
+        <li><a href="#tools" class="docs-nav-link" id="link-tools">5. Tool Integration</a></li>
+        <li><a href="#judging" class="docs-nav-link" id="link-judging">6. 3-Round Judging Rubric</a></li>
+        <li><a href="#submission" class="docs-nav-link" id="link-submission">7. Submission Rules</a></li>
+        <li><a href="#contract" class="docs-nav-link" id="link-contract">8. Backend Contract</a></li>
       </ul>
     </aside>
 
@@ -271,16 +274,38 @@
           Welcome to the developer documentation for the <strong>AgentX Challenge</strong>. This event is an intensive internal hackathon hosted exclusively at <strong>SRMIST Tiruchirappalli</strong> for students across all technical departments.
         </p>
         <p>
-          The hackathon is a fast-paced <strong>24-hour sprint</strong> beginning on <strong>October 8</strong> and ending on <strong>October 9</strong>. Teams will compete to design, implement, and deploy autonomous AI Agent architectures addressing critical problems in one of five target domains: Healthcare, Education, Agriculture, Finance, and Smart Cities.
+          The hackathon is a fast-paced <strong>6-hour sprint</strong> taking place on <strong>October 30, 2026</strong>. Teams will compete to design, implement, and deploy autonomous AI Agent architectures addressing critical problems in one of five target domains: Healthcare, Education, Agriculture, Finance, and Smart Cities.
         </p>
         <div class="docs-alert">
-          <strong>Key Info:</strong> Make sure you have submitted your final registration on the Google Form before October 8, 2026. Teams should consist of 1 to 4 members.
+          <strong>Key Info:</strong> Registration opens on October 10, 2026. Make sure you have submitted your final registration on the Google Form before October 30, 2026. Teams should consist of 1 to 4 members.
         </div>
       </section>
 
       <!-- Section 2 -->
+      <section class="docs-section" id="models">
+        <h2>2. Free Cloud Models & Colab Setup</h2>
+        <p>
+          You do <strong>not</strong> need a credit card or paid subscription. We have structured the entire hackathon around high-speed, free cloud API tiers and zero-install options:
+        </p>
+        <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
+          <li>
+            <strong>Google AI Studio</strong>: Generate a free API key at <a href="https://aistudio.google.com" target="_blank" style="color: var(--primary);">aistudio.google.com</a> using your college or personal Google account. Free tier with per-minute and per-day limits.
+          </li>
+          <li>
+            <strong>Groq Cloud</strong>: Create an instant free key at <a href="https://console.groq.com" target="_blank" style="color: var(--primary);">console.groq.com</a>. Offers very fast inference, handy for multi-step tool loops. Available free models change over time, so pick one your key lists.
+          </li>
+          <li>
+            <strong>Google Colab Starter Notebook (Zero Local Install)</strong>: If your lab PC has restrictions on software installation or slow package downloads, run the starter agent in Google Chrome directly via our Colab template.
+          </li>
+        </ul>
+        <div class="docs-alert">
+          <strong>Tip for Beginners:</strong> Store your API keys in a <code>.env</code> file (or Colab Secrets) and never commit your raw keys to GitHub.
+        </div>
+      </section>
+
+      <!-- Section 3 -->
       <section class="docs-section" id="concept">
-        <h2>2. Concept of Agentic AI</h2>
+        <h2>3. Concept of Agentic AI</h2>
         <p>
           Unlike traditional AI systems that act as single-turn chat completion wrappers, <strong>Agentic AI</strong> systems are designed with autonomy. An agent operates within a cyclic execution sequence commonly referred to as the <strong>Perceive-Plan-Act</strong> loop:
         </p>
@@ -294,9 +319,9 @@
         </p>
       </section>
 
-      <!-- Section-3 -->
+      <!-- Section 4 -->
       <section class="docs-section" id="reasoning">
-        <h2>3. Planning & Reasoning</h2>
+        <h2>4. Planning & Reasoning</h2>
         <p>
           For the AgentX Challenge, your team must implement a robust reasoning mechanism. Common patterns include:
         </p>
@@ -313,9 +338,9 @@
         </ul>
       </section>
 
-      <!-- Section 4 -->
+      <!-- Section 5 -->
       <section class="docs-section" id="tools">
-        <h2>4. Tool Integration</h2>
+        <h2>5. Tool Integration</h2>
         <p>
           Agents interact with the external world using <strong>Tools</strong>. A tool is a function wrapped in a structured schema that tells the LLM the function name, what it does, and what inputs it accepts.
         </p>
@@ -339,11 +364,40 @@
         </p>
       </section>
 
-      <!-- Section 5 -->
-      <section class="docs-section" id="submission">
-        <h2>5. Submission Rules</h2>
+      <!-- Section 6 -->
+      <section class="docs-section" id="judging">
+        <h2>6. 3-Round Milestone Judging & Anti-Wrapper Policy</h2>
         <p>
-          The build window ends exactly 24 hours after launch. Your submission must include:
+          To ensure fairness and encourage genuine technical depth, judging takes place live in the computer labs across three milestones:
+        </p>
+        <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem;">
+          <li>
+            <strong>Round 1: Desk Setup Check (Hour 3)</strong>: Judges verify that your team has an active environment (or Colab), valid API keys, and at least 1 working custom tool call executing live in the terminal.
+          </li>
+          <li>
+            <strong>Round 2: Autonomy & Tool Loop Elimination (Hour 5.5)</strong>: Judges stress-test your agent with an unseen test query at your lab desk. The agent must demonstrate multi-step reasoning (Thought ➔ Action ➔ Tool Result ➔ Synthesis) with at least 2 distinct tools. The top 6–8 teams are selected for the auditorium finale.
+          </li>
+          <li>
+            <strong>Round 3: Grand Finale Stage Pitches (Hour 7)</strong>: Finalists present a 3-minute pitch, 2-minute live demo, and answer judge Q&A in the auditorium.
+          </li>
+        </ul>
+        <p>Final scoring weights (100 points):</p>
+        <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+          <li><strong>Agentic Architecture &amp; Autonomy (40)</strong>: plans before acting, picks tools dynamically, handles failures and retries.</li>
+          <li><strong>Domain Utility &amp; Execution (30)</strong>: realistic datasets and APIs, no dummy hardcoded strings.</li>
+          <li><strong>Code Hygiene &amp; System Design (20)</strong>: separate agent brain, tool registry and execution driver; reproducible repo.</li>
+          <li><strong>Presentation &amp; Live Demo (10)</strong>: clear demo and confident answers to judge questions.</li>
+        </ul>
+        <div class="docs-alert">
+          <strong>Anti-Wrapper Policy:</strong> Systems that simply forward a user query to a single LLM prompt without an autonomous decision loop, without tool calls, or with hardcoded outputs will be penalized with an automatic ceiling of 40% maximum score.
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section class="docs-section" id="submission">
+        <h2>7. Submission Rules</h2>
+        <p>
+          The build window ends exactly 6 hours after launch. Code freeze is at 03:45 PM. Your submission, sent via Google Form, must include:
         </p>
         <ul class="docs-checklist">
           <li>
@@ -365,9 +419,26 @@
             <span><strong>Demo Video</strong> (2-minute maximum) showing the agent performing live planning and executing tool calls.</span>
           </li>
         </ul>
+      </section>
+
+      <!-- Section 8 -->
+      <section class="docs-section" id="contract">
+        <h2>8. Backend Contract (Auto-Judging)</h2>
         <p>
-          Your submissions will go through <strong>3 rounds of judging</strong> on October 9: Round 1 checking repository codebase quality, Round 2 testing code capability in a sandboxed scenario, and Round 3 evaluating finalists live.
+          Every submission is tested automatically on hidden data before judges see your frontend. Your repo must be <strong>public</strong> and follow this contract:
         </p>
+        <ul style="list-style-type: disc; padding-left: 1.5rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.5rem;">
+          <li><code>python main.py --json "&lt;query&gt;"</code> prints one JSON object to stdout, with logs on stderr.</li>
+          <li>Shape: <code>{"answer": "...", "trace": [{"thought": "...", "tool": "name", "args": {}, "observation": "..."}]}</code>. Every tool call must appear in the trace.</li>
+          <li>Read input files from the folder in the <code>AGENTX_DATA_DIR</code> environment variable, using your theme's file names (for example <code>transactions.csv</code>). Never hardcode paths or answers.</li>
+          <li>Read API keys from <code>GEMINI_API_KEY</code> / <code>GROQ_API_KEY</code> only. A committed key costs hygiene points.</li>
+          <li>Include <code>requirements.txt</code>, a README, and at least 2 tools. Cap your loop (for example <code>max_iterations = 5</code>).</li>
+          <li>If a data file is empty or a tool fails, return a graceful answer instead of crashing.</li>
+          <li>Your frontend may be anything, but it must call this same agent code.</li>
+        </ul>
+        <div class="docs-alert">
+          The tests use unseen queries and different data from the public datasets, so hardcoded outputs will fail.
+        </div>
       </section>
     </main>
   </div>

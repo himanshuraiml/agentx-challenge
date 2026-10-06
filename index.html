@@ -3,416 +3,471 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Primary SEO Meta Tags -->
-  <title>AgentX Challenge — Innovating with Agentic AI Hackathon</title>
-  <meta name="title" content="AgentX Challenge — Innovating with Agentic AI Hackathon">
-  <meta name="description" content="Join the AgentX Challenge hackathon and build autonomous AI agents targeting Healthcare, Education, Agriculture, Finance, and Smart Cities. Register now.">
+
+  <title>AgentX Challenge 2026 — Innovating with Agentic AI Hackathon</title>
+  <meta name="title" content="AgentX Challenge 2026 — Innovating with Agentic AI Hackathon">
+  <meta name="description" content="A 6-hour in-person agentic AI hackathon for all B.Tech students at SRMIST Tiruchirappalli, a collaboration of AI × CSE × AIFT. Build real tool-using agents on free Google AI Studio and Groq APIs. ₹10,000 in prizes.">
   <meta name="robots" content="index, follow">
-  
-  <!-- CSS Stylesheet -->
+  <meta name="theme-color" content="#07090d">
+
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-  <!-- Navigation Bar -->
   <header>
     <nav class="nav-container">
-      <a href="#" class="logo">
+      <a href="#home" class="logo">
         <span class="logo-dot"></span>
         AGENT<span>X</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#themes">Themes</a></li>
-        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#loop">The Loop</a></li>
+        <li><a href="#themes">Challenges</a></li>
+        <li><a href="#kit">Starter Kit</a></li>
+        <li><a href="#timeline">Schedule</a></li>
+        <li><a href="#judging">Judging</a></li>
         <li><a href="#prizes">Prizes</a></li>
         <li><a href="#faq">FAQ</a></li>
+        <li><a href="template.html">GitHub Template</a></li>
+        <li><a href="docs.html">Developer Docs</a></li>
         <li>
-          <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" class="btn btn-nav-register" style="text-decoration: none;">Register Now</a>
+          <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" rel="noopener" class="btn btn-nav-register" style="text-decoration: none;">Register</a>
         </li>
       </ul>
     </nav>
   </header>
 
-  <!-- Hero Section -->
   <main>
+    <!-- Hero -->
     <section class="hero" id="home">
       <canvas id="hero-canvas"></canvas>
-      
+
       <div class="hero-grid">
         <div class="hero-content">
+          <div class="collab">A collaboration of <b>AI</b><i>×</i><b>CSE</b><i>×</i><b>AIFT</b></div>
           <div class="hero-tag">
             <span class="hero-tag-dot"></span>
-            SRMIST Tiruchirappalli — Internal Hackathon
+            SRMIST Tiruchirappalli · 30 Oct 2026 · In-person
           </div>
           <h1>
-            Innovating with
-            <span>Agentic AI</span>
+            Build agents that
+            <span>actually act.</span>
           </h1>
           <p class="hero-description">
-            An exclusive internal hackathon for students across all technical departments at SRMIST Tiruchirappalli. Build autonomous reasoning loops, tool-calling frameworks, and self-improving agents to tackle foundational problems in Healthcare, Education, Agriculture, Finance, and Smart Cities.
+            A 6-hour on-campus sprint open to all B.Tech students. Ship an AI agent that plans, picks its own tools, and recovers from failure, not a chatbot with a nicer UI. Free Google AI Studio &amp; Groq keys, a ready starter kit, and senior mentors at your bench.
           </p>
           <div class="hero-actions">
-            <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" class="btn btn-primary" style="text-decoration: none;">Register For Hackathon</a>
-            <a href="#timeline" class="btn btn-secondary">Explore Schedule</a>
+            <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration: none;">Register your team</a>
+            <a href="#themes" class="btn btn-secondary">See the 5 challenges</a>
           </div>
         </div>
-        
+
         <div class="hero-visual">
-          <div class="core-container">
-            <div class="core-glow"></div>
-            <div class="core-ring"></div>
-            <div class="core-ring-2"></div>
-            <div class="core-ring-3"></div>
-            <div class="core-sphere"></div>
-            
-            <!-- Floating indicators -->
-            <div class="floating-badge fb-1">
-              <span class="badge-dot bg-healthcare"></span>
-              Healthcare Agent
+          <div class="trace" aria-label="Example agent execution trace">
+            <div class="trace-bar">
+              <span></span><span></span><span></span>
+              <em>agent_trace.log</em>
             </div>
-            <div class="floating-badge fb-2">
-              <span class="badge-dot bg-finance"></span>
-              Portfolio Optimizer
-            </div>
-            <div class="floating-badge fb-3">
-              <span class="badge-dot bg-smartcities"></span>
-              Traffic Flow Calibrator
-            </div>
+            <pre class="trace-body"><span class="t-dim">query ▸ "Fever + cough, on warfarin"</span>
+<span class="t-thought">THOUGHT</span> Need to check drug safety first.
+<span class="t-action">ACTION&nbsp;</span> interactions.lookup("warfarin")
+<span class="t-obs">OBSERVE</span> ⚠ NSAIDs raise bleeding risk
+<span class="t-thought">THOUGHT</span> Look for safe home-care advice.
+<span class="t-action">ACTION&nbsp;</span> web.search("fever care on warfarin")
+<span class="t-obs">OBSERVE</span> 3 sources retrieved
+<span class="t-final">DECIDE&nbsp;</span> Urgency: <b class="t-yellow">YELLOW</b><span class="t-caret"></span></pre>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Hackathon Themes Section -->
+    <!-- Key facts strip -->
+    <div class="facts reveal">
+      <div class="fact"><b>6 hrs</b><span>build window</span></div>
+      <div class="fact"><b>2–4</b><span>members per team</span></div>
+      <div class="fact"><b>₹10,000</b><span>cash prize pool</span></div>
+      <div class="fact"><b>₹0</b><span>API cost, no card</span></div>
+      <div class="fact"><b>3</b><span>judging stages</span></div>
+    </div>
+
+    <!-- The Loop -->
+    <section id="loop">
+      <div class="section-header reveal">
+        <p class="section-subtitle">What counts as an agent</p>
+        <h2 class="section-title">Wrapper or agent? The loop decides.</h2>
+        <p class="section-desc">
+          Judges read your execution trace. If your system doesn't run this loop with real tools, it's a wrapper, and wrappers are capped at 40%.
+        </p>
+      </div>
+
+      <div class="loop-row reveal">
+        <div class="loop-step"><span>01</span><h3>Thought</h3><p>Plan the next move from the goal and what's known so far.</p></div>
+        <div class="loop-arrow">➔</div>
+        <div class="loop-step"><span>02</span><h3>Action</h3><p>Choose a tool dynamically and call it with real arguments.</p></div>
+        <div class="loop-arrow">➔</div>
+        <div class="loop-step"><span>03</span><h3>Observation</h3><p>Read the tool output, including errors and empty results.</p></div>
+        <div class="loop-arrow">➔</div>
+        <div class="loop-step"><span>04</span><h3>Decision</h3><p>Loop again, retry, or synthesize the final answer.</p></div>
+      </div>
+    </section>
+
+    <!-- Challenges -->
     <section id="themes">
       <div class="section-header reveal">
-        <p class="section-subtitle">Hackathon Domains</p>
-        <h2 class="section-title">The Five Challenge Themes</h2>
+        <p class="section-subtitle">Pick one problem statement</p>
+        <h2 class="section-title">Five challenges. Real datasets.</h2>
         <p class="section-desc">
-          Choose a domain and construct agentic systems that use planning, tools, and execution loops to deliver scalable solutions.
+          No blank-page paralysis. Each challenge ships with a defined input, expected tool use, and an output your agent must produce. Public datasets are linked on each card; trim or reshape them into the listed file for your agent.
         </p>
       </div>
 
-      <div class="themes-grid">
-        <!-- Healthcare Card -->
-        <article class="theme-card reveal" style="--theme-color: var(--healthcare); --theme-rgb: var(--healthcare-rgb);">
-          <div class="theme-icon-box">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
-          </div>
-          <h3>Healthcare & Biotech</h3>
-          <p>Design medical diagnosis systems, personalized patient recovery agents, or clinical database parsing engines that execute multi-step research queries.</p>
-          <div class="theme-examples">
-            <h4 class="theme-examples-title">Focus Areas</h4>
-            <div class="theme-tag-list">
-              <span class="theme-tag">Clinical Trial Querying</span>
-              <span class="theme-tag">HbA1c Optimizers</span>
-              <span class="theme-tag">Drug Screening Assistants</span>
-            </div>
-            <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" class="btn-theme-action" style="text-decoration: none;">
-              Register for Theme
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
+      <div class="pgrid">
+        <article class="pcard reveal" style="--theme-color: var(--healthcare); --theme-rgb: var(--healthcare-rgb);">
+          <span class="pcard-tag">Healthcare &amp; Biotech</span>
+          <h3>Patient Triage &amp; Interaction Checker</h3>
+          <p>Symptoms and current medications in, a triage summary with urgency out.</p>
+          <ol>
+            <li>Parse symptoms into medical terms</li>
+            <li>Flag contraindications via local drug tool</li>
+            <li>Search recent home-care protocols</li>
+            <li>Classify urgency: Green / Yellow / Red</li>
+          </ol>
+          <div class="pcard-data"><code>interactions.json</code></div>
+          <div class="pcard-links"><a href="https://data.mendeley.com/datasets/md5czfsfnd/1" target="_blank" rel="noopener">Drug–drug interactions (DrugBank, CSV) ↗</a></div>
+        </article>
+
+        <article class="pcard reveal" style="--theme-color: var(--education); --theme-rgb: var(--education-rgb);">
+          <span class="pcard-tag">Education &amp; Pedagogy</span>
+          <h3>Adaptive Syllabus Coach &amp; Debug Tutor</h3>
+          <p>Find a student's weak topics, then teach and test them.</p>
+          <ol>
+            <li>Read weak topics from test scores</li>
+            <li>Retrieve matching curriculum segments</li>
+            <li>Build a 3-day remedial schedule</li>
+            <li>Auto-generate a problem, run student code in a sandbox, give feedback</li>
+          </ol>
+          <div class="pcard-data"><code>scores.csv</code></div>
+          <div class="pcard-links"><a href="https://archive.ics.uci.edu/dataset/320/student+performance" target="_blank" rel="noopener">UCI Student Performance (G1–G3 grades) ↗</a></div>
+        </article>
+
+        <article class="pcard reveal" style="--theme-color: var(--agriculture); --theme-rgb: var(--agriculture-rgb);">
+          <span class="pcard-tag">Precision Agriculture</span>
+          <h3>Crop Stress Telemetry &amp; Advisory</h3>
+          <p>Sensor readings in, an actionable farm advisory out.</p>
+          <ol>
+            <li>Analyze 7 days of soil trends</li>
+            <li>Check rainfall risk with a weather tool</li>
+            <li>Compute exact fertilizer / water dosage</li>
+            <li>Write advice in simple regional language or English</li>
+          </ol>
+          <div class="pcard-data"><code>soil_telemetry.csv</code></div>
+          <div class="pcard-links">
+            <a href="https://data.mendeley.com/datasets/33cngpcrmx" target="_blank" rel="noopener">Tomato irrigation sensors: moisture, NPK, temp ↗</a>
+            <a href="https://www.kaggle.com/datasets/atharvaingle/crop-recommendation-dataset" target="_blank" rel="noopener">Kaggle Crop Recommendation (N, P, K, pH, rainfall) ↗</a>
           </div>
         </article>
 
-        <!-- Education Card -->
-        <article class="theme-card reveal" style="--theme-color: var(--education); --theme-rgb: var(--education-rgb);">
-          <div class="theme-icon-box">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-            </svg>
-          </div>
-          <h3>Education & Pedagogy</h3>
-          <p>Develop tailored syllabus engines, adaptive mock-interview trainers, or interactive coding tutors capable of analyzing student code outputs.</p>
-          <div class="theme-examples">
-            <h4 class="theme-examples-title">Focus Areas</h4>
-            <div class="theme-tag-list">
-              <span class="theme-tag">Adaptive Syllabi</span>
-              <span class="theme-tag">LMS Integration Agents</span>
-              <span class="theme-tag">Feedback Loops</span>
-            </div>
-            <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" class="btn-theme-action" style="text-decoration: none;">
-              Register for Theme
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
+        <article class="pcard reveal" style="--theme-color: var(--finance); --theme-rgb: var(--finance-rgb);">
+          <span class="pcard-tag">Finance &amp; Risk</span>
+          <h3>Expense Auditor &amp; Anomaly Hunter</h3>
+          <p>A UPI or bank statement in, a rebalanced budget plan out.</p>
+          <ol>
+            <li>Auto-categorize every purchase</li>
+            <li>Detect duplicates, subscription creep, spend surges</li>
+            <li>Explain each finding with reasoning</li>
+            <li>Propose a personalized budget plan</li>
+          </ol>
+          <div class="pcard-data"><code>transactions.csv</code></div>
+          <div class="pcard-links"><a href="https://www.kaggle.com/datasets/skullagos5246/upi-transactions-2024-dataset" target="_blank" rel="noopener">Kaggle UPI Transactions 2024 ↗</a></div>
+        </article>
+
+        <article class="pcard reveal" style="--theme-color: var(--smartcities); --theme-rgb: var(--smartcities-rgb);">
+          <span class="pcard-tag">Smart Cities &amp; Campus</span>
+          <h3>Campus Energy &amp; Traffic Optimizer</h3>
+          <p>Gate traffic and classroom power logs in, a greener schedule out.</p>
+          <ol>
+            <li>Find peak congestion at campus gates</li>
+            <li>Run a scheduling tool for staggered lectures and HVAC cut-offs</li>
+            <li>Produce a daily green-footprint report</li>
+          </ol>
+          <div class="pcard-data"><code>gate_traffic.csv</code><code>power_logs.csv</code></div>
+          <div class="pcard-links">
+            <a href="https://archive.ics.uci.edu/dataset/492/metro+interstate+traffic+volume" target="_blank" rel="noopener">UCI Metro Interstate Traffic Volume (hourly) ↗</a>
+            <a href="https://data.mendeley.com/datasets/kk83kzbbp5/1" target="_blank" rel="noopener">Academic building hourly energy (kWh) ↗</a>
           </div>
         </article>
 
-        <!-- Agriculture Card -->
-        <article class="theme-card reveal" style="--theme-color: var(--agriculture); --theme-rgb: var(--agriculture-rgb);">
-          <div class="theme-icon-box">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-            </svg>
-          </div>
-          <h3>Precision Agriculture</h3>
-          <p>Build crop risk estimators, soil moisture management pipelines, or smart pest control planners using historical sensor telemetry databases.</p>
-          <div class="theme-examples">
-            <h4 class="theme-examples-title">Focus Areas</h4>
-            <div class="theme-tag-list">
-              <span class="theme-tag">Soil Moisture Plans</span>
-              <span class="theme-tag">Fungal Blight Warnings</span>
-              <span class="theme-tag">Crop Yield Engines</span>
-            </div>
-            <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" class="btn-theme-action" style="text-decoration: none;">
-              Register for Theme
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- Finance Card -->
-        <article class="theme-card reveal" style="--theme-color: var(--finance); --theme-rgb: var(--finance-rgb);">
-          <div class="theme-icon-box">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-          </div>
-          <h3>Finance & Risk Management</h3>
-          <p>Create anomaly detectors, real-time transaction scanners, or inflation-resistant asset portfolio planners that fetch market metrics.</p>
-          <div class="theme-examples">
-            <h4 class="theme-examples-title">Focus Areas</h4>
-            <div class="theme-tag-list">
-              <span class="theme-tag">Inflation Hedging</span>
-              <span class="theme-tag">Fraud Anomaly Checks</span>
-              <span class="theme-tag">Yield Allocators</span>
-            </div>
-            <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" class="btn-theme-action" style="text-decoration: none;">
-              Register for Theme
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- Smart Cities Card -->
-        <article class="theme-card reveal" style="--theme-color: var(--smartcities); --theme-rgb: var(--smartcities-rgb);">
-          <div class="theme-icon-box">
-            <svg viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-            </svg>
-          </div>
-          <h3>Smart Cities & Infrastructure</h3>
-          <p>Develop traffic congestion models, automated grid energy regulators, or municipal routing systems linked to camera databases.</p>
-          <div class="theme-examples">
-            <h4 class="theme-examples-title">Focus Areas</h4>
-            <div class="theme-tag-list">
-              <span class="theme-tag">Traffic Signal timing</span>
-              <span class="theme-tag">Emission Optimizers</span>
-              <span class="theme-tag">Grid Flow Telemetry</span>
-            </div>
-            <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" class="btn-theme-action" style="text-decoration: none;">
-              Register for Theme
-              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          </div>
+        <article class="pcard pcard-cta reveal">
+          <h3>Ready to build?</h3>
+          <p>Choose your theme on the registration form. One team, one theme.</p>
+          <a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration: none;">Register now</a>
         </article>
       </div>
     </section>
 
+    <!-- Starter Kit -->
+    <section id="kit">
+      <div class="section-header reveal">
+        <p class="section-subtitle">Zero cost · Zero install</p>
+        <h2 class="section-title">Show up ready. We ship the starter kit a week early.</h2>
+        <p class="section-desc">
+          Only know basic Python? That's the target audience. Released on 10 Oct so you can warm up before sprint day.
+        </p>
+      </div>
 
+      <div class="kit-grid">
+        <div class="kit-card reveal">
+          <h3>agentx-starter repo</h3>
+          <p>A pre-wired ReAct loop in pure Python, no heavy orchestration framework. Sample tools: DuckDuckGo web search, CSV/SQL data query, calculator.</p>
+          <a href="template.html">View template ➔</a>
+        </div>
+        <div class="kit-card reveal">
+          <h3>One-click Colab notebook</h3>
+          <p>Pre-installs <code>google-genai</code>, <code>groq</code>, <code>python-dotenv</code>, <code>duckduckgo-search</code>. Lab PC locked down? Run it entirely in Chrome.</p>
+          <a href="docs.html#models">Setup guide ➔</a>
+        </div>
+        <div class="kit-card reveal">
+          <h3>15-minute video walkthrough</h3>
+          <ol class="kit-steps">
+            <li><b>0–3</b> Agent vs ChatGPT wrapper</li>
+            <li><b>3–7</b> Getting free Google AI Studio &amp; Groq keys</li>
+            <li><b>7–12</b> Run the loop, add a custom tool</li>
+            <li><b>12–15</b> Submit and record your demo</li>
+          </ol>
+        </div>
+        <div class="kit-card kit-models reveal">
+          <h3>Free API access</h3>
+          <div class="model-row"><b>Google AI Studio</b><span>Free API key with your Google account</span></div>
+          <div class="model-row"><b>Groq Cloud</b><span>Free API key, very fast responses</span></div>
+          <p class="kit-note">No credit card, ever. Use whichever free models your key offers. Hit a rate limit? Mentors have reserve keys.</p>
+        </div>
+      </div>
+    </section>
 
-    <!-- Timeline Section -->
+    <!-- Timeline -->
     <section id="timeline">
       <div class="section-header reveal">
-        <p class="section-subtitle">Event Roadmap</p>
-        <h2 class="section-title">Hackathon Schedule</h2>
-        <p class="section-desc">
-          Plan your timeline properly. Follow these key milestones to submit your idea drafts and complete your build.
-        </p>
+        <p class="section-subtitle">Event roadmap</p>
+        <h2 class="section-title">From registration to trophy</h2>
       </div>
 
       <div class="timeline-track reveal">
         <div class="timeline-line"></div>
-        
+
         <div class="timeline-item left">
           <div class="timeline-dot-marker"></div>
           <div class="timeline-content">
-            <div class="timeline-date">SEPTEMBER 15, 2026</div>
-            <h3>Registration Opens</h3>
-            <p>Registration officially opens via the Google Form. Form your team of 1-4 developers and begin brainstorming your agent core.</p>
+            <div class="timeline-date">OCTOBER 10, 2026</div>
+            <h3>Registration opens &amp; starter kit released</h3>
+            <p>Register via Google Form. Get the starter repo, Colab notebook, and video walkthrough.</p>
           </div>
         </div>
 
         <div class="timeline-item right">
           <div class="timeline-dot-marker"></div>
           <div class="timeline-content">
-            <div class="timeline-date">SEPTEMBER 30, 2026</div>
-            <h3>Idea Draft Submission</h3>
-            <p>Submit your initial project proposal and system block diagrams, describing your proposed planning and tool architectures.</p>
+            <div class="timeline-date">OCTOBER 25, 2026</div>
+            <h3>Idea draft &amp; lab bench allocation</h3>
+            <p>Submit a brief idea draft and your roster of 2–4 members. Teams receive bench numbers and mentors.</p>
           </div>
         </div>
 
         <div class="timeline-item left">
           <div class="timeline-dot-marker"></div>
           <div class="timeline-content">
-            <div class="timeline-date">OCTOBER 8 - 9, 2026</div>
-            <h3>24-Hour Virtual Hackathon</h3>
-            <p>The intense 24-hour build window begins! Write your code, link your tools, and complete your autonomous agent workflows.</p>
+            <div class="timeline-date">OCTOBER 28, 2026</div>
+            <h3>Lab Wi-Fi &amp; API test</h3>
+            <p>Confirm your keys work on campus network before sprint day.</p>
           </div>
         </div>
 
         <div class="timeline-item right">
           <div class="timeline-dot-marker"></div>
           <div class="timeline-content">
-            <div class="timeline-date">OCTOBER 9, 2026</div>
-            <h3>3 Rounds of Judging & Finale</h3>
-            <p>Submit your agent code and demo. Projects undergo 3 strict rounds of technical and impact judging, leading to the grand showcase.</p>
+            <div class="timeline-date">OCTOBER 30, 2026</div>
+            <h3>Sprint day: labs, then stage</h3>
+            <p>Full run of show below. Build in the labs, get eliminated or advance at desk checks, pitch in the auditorium.</p>
           </div>
         </div>
       </div>
+
+      <h3 class="sub-heading reveal">Sprint day · 30 October</h3>
+      <div class="ros reveal">
+        <div class="ros-row"><time>08:30</time><div><b>Registration &amp; check-in</b><span>Team IDs verified, bench numbers and Wi-Fi credentials issued.</span></div></div>
+        <div class="ros-row"><time>09:15</time><div><b>Opening &amp; challenge briefing</b><span>The 5 themes and the judging rubric explained.</span></div></div>
+        <div class="ros-row ros-hl"><time>09:45</time><div><b>Timer starts</b><span>6-hour build window begins.</span></div></div>
+        <div class="ros-row"><time>10:30</time><div><b>Mentor stand-up</b><span>Every team confirmed with working keys and a running starter repo.</span></div></div>
+        <div class="ros-row ros-gate"><time>12:00</time><div><b>Round 1 · Desk check (Hour 3)</b><span>Show an active repo or Colab and at least 1 custom tool call in the terminal. Miss it and you get 30 minutes of mentor triage.</span></div></div>
+        <div class="ros-row"><time>12:45</time><div><b>Working lunch</b><span>Served at your bench.</span></div></div>
+        <div class="ros-row ros-gate"><time>14:30</time><div><b>Round 2 · Elimination (Hour 5.5)</b><span>Judges inspect the autonomy loop. Top 6–8 teams advance to the finale.</span></div></div>
+        <div class="ros-row ros-hl"><time>15:45</time><div><b>Code freeze</b><span>Push to GitHub and submit your 2-minute demo link via Google Form.</span></div></div>
+        <div class="ros-row ros-gate"><time>16:00</time><div><b>Round 3 · Grand finale</b><span>Auditorium: 3 min pitch, 2 min live demo, 2 min judge Q&amp;A.</span></div></div>
+        <div class="ros-row"><time>17:00</time><div><b>Valedictory &amp; prizes</b><span>Gold, Silver and Bronze announced, certificates distributed.</span></div></div>
+      </div>
     </section>
 
-    <!-- Prizes Section -->
+    <!-- Judging -->
+    <section id="judging">
+      <div class="section-header reveal">
+        <p class="section-subtitle">Anti-wrapper judging</p>
+        <h2 class="section-title">How you're scored</h2>
+        <p class="section-desc">
+          Judges inspect terminal logs and execution traces, not just the UI.
+        </p>
+      </div>
+
+      <div class="rubric reveal">
+        <div class="rub-row"><div class="rub-head"><b>Agentic architecture &amp; autonomy</b><em>40</em></div><div class="rub-bar"><i style="width:40%"></i></div><p>Plans before acting, chooses tools dynamically, handles tool failures and retries.</p></div>
+        <div class="rub-row"><div class="rub-head"><b>Domain utility &amp; execution</b><em>30</em></div><div class="rub-bar"><i style="width:30%"></i></div><p>Solves the chosen problem realistically using real datasets or APIs, not hardcoded strings.</p></div>
+        <div class="rub-row"><div class="rub-head"><b>Code hygiene &amp; system design</b><em>20</em></div><div class="rub-bar"><i style="width:20%"></i></div><p>Clean split between agent brain, tool registry and execution driver. Repo runs from the README.</p></div>
+        <div class="rub-row"><div class="rub-head"><b>Presentation &amp; live demo</b><em>10</em></div><div class="rub-bar"><i style="width:10%"></i></div><p>Clear explanation, and every team member can answer technical questions.</p></div>
+      </div>
+
+      <div class="warn reveal">
+        <b>40% ceiling.</b> Forwarding prompts to an LLM with no decision loop, no tool execution, or mocked tool outputs caps your score at 40 out of 100.
+      </div>
+
+      <div class="stages reveal">
+        <div class="stage"><span>Round 1</span><h4>Hour 3 · Desk pass</h4><p>Environment ready plus 1 working tool call. Pass or probation.</p></div>
+        <div class="stage"><span>Round 2</span><h4>Hour 5.5 · Score out of 50</h4><p>Autonomy &amp; reasoning 20, real tool execution 15, error recovery &amp; guardrails 15. Needs 2+ tools.</p></div>
+        <div class="stage"><span>Round 3</span><h4>Finale · Score out of 100</h4><p>Problem relevance &amp; impact 20, live demo 20, technical depth &amp; Q&amp;A 10.</p></div>
+      </div>
+    </section>
+
+    <!-- Prizes -->
     <section id="prizes">
       <div class="section-header reveal">
-        <p class="section-subtitle">Hackathon Rewards</p>
-        <h2 class="section-title">Prizes & Allocations</h2>
+        <p class="section-subtitle">Rewards</p>
+        <h2 class="section-title">₹10,000 in cash prizes</h2>
         <p class="section-desc">
-          Hack to win cash rewards for the top performing teams.
+          Plus trophies, medals, and certificates for the podium teams.
         </p>
       </div>
 
       <div class="prizes-grid reveal">
-        <!-- Second place -->
         <div class="prize-card silver">
           <span class="prize-badge" style="background: #94a3b8;">Runner Up</span>
           <div class="prize-icon-wrapper">🥈</div>
           <div class="prize-amount">₹3,000</div>
           <h3 class="prize-title">Silver Award</h3>
+          <ul class="prize-features"><li>Silver medals</li><li>Certificate of Excellence</li></ul>
         </div>
 
-        <!-- First place -->
         <div class="prize-card gold" style="border-color: rgba(245, 158, 11, 0.35); box-shadow: 0 20px 40px -10px rgba(245, 158, 11, 0.15);">
-          <span class="prize-badge" style="background: var(--finance);">Grand Champion</span>
+          <span class="prize-badge" style="background: var(--finance); color:#111;">Grand Champion</span>
           <div class="prize-icon-wrapper">🏆</div>
           <div class="prize-amount">₹5,000</div>
           <h3 class="prize-title">Gold Award</h3>
+          <ul class="prize-features"><li>Champion trophy</li><li>Certificate of Excellence</li></ul>
         </div>
 
-        <!-- Third place -->
         <div class="prize-card bronze">
           <span class="prize-badge" style="background: #b45309;">Innovator</span>
           <div class="prize-icon-wrapper">🥉</div>
           <div class="prize-amount">₹2,000</div>
           <h3 class="prize-title">Bronze Award</h3>
+          <ul class="prize-features"><li>Bronze medals</li><li>Certificate of Excellence</li></ul>
         </div>
       </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- Support -->
+    <section id="support" class="support">
+      <div class="support-grid reveal">
+        <div><h3>Mentors, not code-writers</h3><p>8–10 senior CSE / IT / AI students, roughly 1 per 4–5 teams. They unblock Python environments, 429 rate-limit errors, and tool-calling JSON schema bugs. You write the agent.</p></div>
+        <div><h3>Fallbacks are ready</h3><p>Lab PC without Python 3.10 or admin rights? Switch to Colab. Rate-limited? Swap providers or take a reserve key. Wi-Fi blocked? Mobile hotspots are on hand.</p></div>
+        <div><h3>Stuck in a loop?</h3><p>Cap iterations (<code>max_iterations = 5</code>) and tell the model to answer with what it has after repeating the same tool twice.</p></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
     <section id="faq">
       <div class="section-header reveal">
         <p class="section-subtitle">Clarifications</p>
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-desc">
-          Got questions? We have answers. If you need further help, reach out to our community organizers.
-        </p>
+        <h2 class="section-title">Frequently asked questions</h2>
       </div>
 
       <div class="faq-list reveal">
         <details class="faq-item">
-          <summary class="faq-summary">
-            Who is eligible to participate in the hackathon?
+          <summary class="faq-summary">Who can participate?
             <svg class="faq-summary-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
-          <div class="faq-content">
-            <p>This is an internal hackathon exclusive to SRMIST Tiruchirappalli. Students from all technical departments are eligible and highly encouraged to participate. Teams can consist of 1 to 4 members.</p>
-          </div>
+          <div class="faq-content"><p>B.Tech students of SRMIST Tiruchirappalli from any branch and any year. Teams have 2 to 4 members.</p></div>
         </details>
 
         <details class="faq-item">
-          <summary class="faq-summary">
-            What counts as an "Agentic AI" project?
+          <summary class="faq-summary">Where is it held and how long?
             <svg class="faq-summary-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
-          <div class="faq-content">
-            <p>An agentic system goes beyond simple LLM wrapping. Your submission should involve a reasoning architecture (e.g. ReAct, Plan-and-Solve, or custom loops), tool invocation capabilities (making web calls, executing code in sandbox, querying databases), and some degree of autonomy in solving a user task.</p>
-          </div>
+          <div class="faq-content"><p>In person on 30 October 2026 in the campus central computer labs, with the finale in the auditorium. It runs about 8 hours in total, with a 6-hour build window from 09:45 to 15:45.</p></div>
         </details>
 
         <details class="faq-item">
-          <summary class="faq-summary">
-            Can we submit projects that were built before?
+          <summary class="faq-summary">Do I need paid API keys or a credit card?
             <svg class="faq-summary-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
-          <div class="faq-content">
-            <p>No. All projects must be started and completed within the 24-hour hackathon build window (October 8 - 9, 2026). Pre-existing templates and basic open-source libraries are permitted, but code specific to the submission must be fresh.</p>
-          </div>
+          <div class="faq-content"><p>No. Use the free tiers of Google AI Studio and Groq. Never enter card details. A Colab notebook is provided, so no local installs are needed.</p></div>
         </details>
 
         <details class="faq-item">
-          <summary class="faq-summary">
-            How long is the build window, and how does judging work?
+          <summary class="faq-summary">What counts as an agent versus a wrapper?
             <svg class="faq-summary-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
-          <div class="faq-content">
-            <p>This is an intense 24-hour hackathon build. Submissions are subjected to 3 sequential rounds of judging: Round 1 (Technical & Code Depth), Round 2 (Agent Autonomy & Tool-Calling validation), and Round 3 (Live Finale Pitches by the top finalists).</p>
-          </div>
+          <div class="faq-content"><p>An agent runs an iterative reasoning loop (Thought, Action, Observation, Decision) and dynamically calls real tools on real data. Wrappers and hardcoded tool outputs are capped at 40%.</p></div>
         </details>
 
         <details class="faq-item">
-          <summary class="faq-summary">
-            Do we have to build in all five domains?
+          <summary class="faq-summary">How does elimination work?
             <svg class="faq-summary-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
-          <div class="faq-content">
-            <p>No. Your team should select one main focus domain (e.g., Healthcare or Agriculture) and build a deep, high-fidelity agentic solution for it. Submitting cross-domain projects is also fine as long as it has a clear primary focus.</p>
-          </div>
+          <div class="faq-content"><p>Round 1 at Hour 3 is a pass or probation check. Round 2 at Hour 5.5 scores your autonomy loop out of 50 and selects the top 6–8 finalists. Round 3 is the live stage pitch.</p></div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-summary">What do I submit?
+            <svg class="faq-summary-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <div class="faq-content"><p>By code freeze at 15:45: a GitHub repo, a system diagram, and a 2-minute demo link (Loom or Drive), submitted via Google Form. See the <a href="docs.html#submission" style="color: var(--primary);">submission rules</a>.</p></div>
         </details>
       </div>
     </section>
   </main>
 
-  <!-- Footer Section -->
   <footer>
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo">
+        <a href="#home" class="logo">
           <span class="logo-dot"></span>
           AGENT<span>X</span>
         </a>
         <p>
-          Empowering the next generation of developers to build autonomous systems that solve real-world problems.
+          AgentX Challenge 2026: Innovating with Agentic AI. Initiated by the Department of AI, SRMIST Tiruchirappalli.
         </p>
       </div>
       <div class="footer-links">
         <h4>Navigation</h4>
         <ul>
-          <li><a href="#themes">Themes</a></li>
-          <li><a href="#timeline">Timeline</a></li>
+          <li><a href="#themes">Challenges</a></li>
+          <li><a href="#timeline">Schedule</a></li>
+          <li><a href="#judging">Judging</a></li>
           <li><a href="#prizes">Prizes</a></li>
         </ul>
       </div>
       <div class="footer-links">
-        <h4>Community</h4>
+        <h4>Resources</h4>
         <ul>
-          <li><a href="#">Discord Server</a></li>
-          <li><a href="template.html">Github Template</a></li>
+          <li><a href="template.html">GitHub Template</a></li>
           <li><a href="docs.html">Developer Docs</a></li>
+          <li><a href="https://forms.gle/hkP5sUWrboaD99FT7" target="_blank" rel="noopener">Registration Form</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 AgentX Challenge. All rights reserved.</p>
-      <p>Organized by SRMIST Tiruchirappalli.</p>
+      <p>A collaboration of AI × CSE × AIFT, SRMIST Tiruchirappalli.</p>
     </div>
   </footer>
 
-  <!-- JavaScript App Logic -->
   <script src="js/app.js"></script>
 </body>
 </html>

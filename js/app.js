@@ -28,7 +28,7 @@ function initParticleSystem() {
       this.vx = (Math.random() - 0.5) * 0.4;
       this.vy = (Math.random() - 0.5) * 0.4;
       this.radius = Math.random() * 2.5 + 1;
-      this.color = Math.random() > 0.5 ? 'rgba(99, 102, 241, 0.4)' : 'rgba(168, 85, 247, 0.3)';
+      this.color = Math.random() > 0.5 ? 'rgba(182, 242, 58, 0.4)' : 'rgba(110, 231, 183, 0.25)';
     }
 
     update() {
@@ -62,7 +62,7 @@ function initParticleSystem() {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(99, 102, 241, ${0.12 * (1 - dist / 120)})`;
+          ctx.strokeStyle = `rgba(182, 242, 58, ${0.12 * (1 - dist / 120)})`;
           ctx.lineWidth = 0.8;
           ctx.stroke();
         }

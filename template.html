@@ -44,7 +44,7 @@
       font-size: 3rem;
       font-weight: 800;
       letter-spacing: -1.5px;
-      background: linear-gradient(135deg, #ffffff 40%, #c7d2fe);
+      background: linear-gradient(135deg, #ffffff 40%, #d9f99d);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin-bottom: 1rem;
@@ -184,21 +184,29 @@
         <p>
           We provide a Python starter template that contains a pre-built reasoning loop structure (ReAct pattern) and examples of binding APIs as tools. You can use it as a base for building your hackathon project.
         </p>
-        <a href="https://github.com/srmist-tiruchi/agentx-starter" target="_blank" class="btn btn-primary btn-template-hero" style="text-decoration: none;">
-          <svg viewBox="0 0 24 24" fill="currentColor">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.435 22 12.017 22 6.484 17.522 2 12 2z" />
-          </svg>
-          Use GitHub Template
-        </a>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="https://github.com/himanshuraiml/agentx-starter/generate" target="_blank" class="btn btn-primary btn-template-hero" style="text-decoration: none;">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.435 22 12.017 22 6.484 17.522 2 12 2z" />
+            </svg>
+            Use GitHub Template
+          </a>
+          <a href="https://colab.research.google.com/github/himanshuraiml/agentx-starter/blob/main/notebooks/agentx_colab.ipynb" target="_blank" class="btn btn-secondary btn-template-hero" style="text-decoration: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+            Open in Google Colab (Zero-Install)
+          </a>
+        </div>
       </section>
 
       <!-- Section 2 -->
       <section class="docs-section">
-        <h2>Local Setup</h2>
-        <p>Clone the repository and run the setup scripts using the following command sequences:</p>
+        <h2>Local & Cloud Setup</h2>
+        <p>You can clone the repository to your laptop, or run directly in Google Colab without downloading anything:</p>
         
         <pre><code><span class="code-comment"># 1. Clone the template repository</span>
-git clone https://github.com/srmist-tiruchi/agentx-starter.git
+git clone https://github.com/himanshuraiml/agentx-starter.git
 cd agentx-starter
 
 <span class="code-comment"># 2. Set up virtual environment</span>
@@ -209,10 +217,13 @@ source venv/bin/activate
 pip install -r requirements.txt
 
 <span class="code-comment"># 4. Initialize environment configuration</span>
-cp .env.example .env</code></pre>
+cp .env.example .env
+
+<span class="code-comment"># 5. Prove your setup works (no API key needed)</span>
+python main.py --dry-run "test"</code></pre>
 
         <p>
-          Configure the `.env` file with your relevant LLM provider API credentials (e.g. OpenAI API Key, Anthropic, or Groq) to start running queries.
+          Configure the <code>.env</code> file with free API credentials. We recommend <strong>Google AI Studio Gemini (GEMINI_API_KEY)</strong> or <strong>Groq Cloud (GROQ_API_KEY)</strong> for free, instant setup without credit cards.
         </p>
       </section>
 
@@ -223,55 +234,51 @@ cp .env.example .env</code></pre>
         
         <div class="file-tree">
 agentx-starter/
-├── config/
-│   └── settings.yaml       # Agent runtime and model hyperparameters
-├── tools/
-│   ├── __init__.py
-│   ├── web_search.py       # Custom search tool integration example
-│   └── database_query.py   # SQL database search tool wrapper
 ├── agent/
-│   ├── __init__.py
-│   ├── core.py             # Main ReAct loop execution logic
-│   └── prompt_builder.py   # Context and system prompt templating
-├── .env.example            # Environment variables configuration guide
-├── main.py                 # Application entry point
-├── requirements.txt        # Python dependency manifest
-└── README.md               # Quick setup details
+│   ├── core.py             # ReAct loop, step cap, repeat guard, error recovery
+│   ├── llm.py              # Gemini / Groq wrapper with 429 retry
+│   └── prompt_builder.py   # System prompt: set your theme's ROLE here
+├── tools/
+│   ├── __init__.py         # Tool base class + registry (add your tools here)
+│   ├── calculator.py       # Safe arithmetic
+│   ├── data_query.py       # list_files, read_file, sql_query over CSVs
+│   └── web_search.py       # DuckDuckGo search
+├── config/__init__.py      # Models, MAX_ITERATIONS, data folder
+├── data/                   # Sample data: replace with your theme's dataset
+├── tests/test_agent.py     # Offline tests (no API key)
+├── notebooks/agentx_colab.ipynb
+├── main.py                 # Entry point + judging contract (--json)
+├── .env.example            # GEMINI_API_KEY / GROQ_API_KEY
+├── requirements.txt
+└── README.md
         </div>
       </section>
 
       <!-- Section 4 -->
       <section class="docs-section">
         <h2>Starter Agent skeleton</h2>
-        <p>Here is an excerpt of the base agent execution loop found in <code>agent/core.py</code>:</p>
+        <p>Here is the core of the agent loop in <code>agent/core.py</code>:</p>
         
-        <pre><code><span class="code-keyword">class</span> <span class="code-class">AgentExecutor</span>:
-    <span class="code-keyword">def</span> <span class="code-func">__init__</span>(<span class="code-keyword">self</span>, model, tools):
-        <span class="code-keyword">self</span>.model = model
-        <span class="code-keyword">self</span>.tools = {tool.name: tool <span class="code-keyword">for</span> tool <span class="code-keyword">in</span> tools}
+        <pre><code><span class="code-keyword">def</span> <span class="code-func">run</span>(self, query, verbose=False):
+    messages = [{"role": "user", "content": query}]
+    trace, seen = [], {}
+    <span class="code-keyword">for</span> step <span class="code-keyword">in</span> range(self.max_iterations):   <span class="code-comment"># hard step cap</span>
+        reply = self.llm.generate(self.system, messages)
+        data = parse_json(reply)
+        <span class="code-keyword">if</span> "final_answer" <span class="code-keyword">in</span> data:               <span class="code-comment"># Decision: done</span>
+            <span class="code-keyword">return</span> data["final_answer"], trace
+        name, args = data["action"], data.get("args", {})
+        observation = self._call_tool(name, args)  <span class="code-comment"># Action -> Observation (errors become text)</span>
+        trace.append({"thought": data.get("thought"), "tool": name,
+                      "args": args, "observation": observation})
+        messages += [{"role": "assistant", "content": json.dumps(data)},
+                     {"role": "user", "content": f"OBSERVATION: {observation}"}]
+    <span class="code-keyword">return</span> self._wrap_up(messages), trace</code></pre>
+        <p>Add a tool by subclassing <code>Tool</code> in <code>tools/</code> and registering it in <code>build_tools()</code>.</p>
 
-    <span class="code-keyword">def</span> <span class="code-func">run</span>(<span class="code-keyword">self</span>, prompt, max_steps=<span class="code-string">5</span>):
-        history = []
-        <span class="code-keyword">for</span> step <span class="code-keyword">in</span> <span class="code-class">range</span>(max_steps):
-            <span class="code-comment"># 1. Ask the model for thought + action</span>
-            response = <span class="code-keyword">self</span>.model.generate(prompt, history)
-            thought, action, action_input = <span class="code-keyword">self</span>.parse_response(response)
-            <span class="code-class">print</span>(<span class="code-string">f"[Thought] {thought}"</span>)
-            
-            <span class="code-keyword">if</span> <span class="code-keyword">not</span> action:
-                <span class="code-comment"># Final response found</span>
-                <span class="code-keyword">return</span> response
-                
-            <span class="code-comment"># 2. Call the tool</span>
-            <span class="code-class">print</span>(<span class="code-string">f"[Calling Tool] {action} with inputs {action_input}"</span>)
-            tool_output = <span class="code-keyword">self</span>.tools[action].execute(action_input)
-            
-            <span class="code-comment"># 3. Add to history for next reasoning loop</span>
-            history.append({
-                <span class="code-string">"thought"</span>: thought,
-                <span class="code-string">"action"</span>: action,
-                <span class="code-string">"output"</span>: tool_output
-            })</code></pre>
+        <div class="docs-alert">
+          <strong>Judging contract:</strong> <code>python main.py --json "&lt;query&gt;"</code> must print one JSON line <code>{"answer": ..., "trace": [...]}</code> and read data from <code>AGENTX_DATA_DIR</code>. The starter already does this. See <a href="docs.html#contract" style="color: var(--primary);">Backend Contract</a>.
+        </div>
       </section>
     </div>
   </main>
