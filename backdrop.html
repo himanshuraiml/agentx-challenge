@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentX Challenge 2026 — Smart Board Stage Backdrop</title>
+  <meta name="theme-color" content="#07090d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700;1,800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/backdrop.css">
+</head>
+<body>
+
+  <!-- Ambient Glows -->
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+
+  <!-- Background Particle Network -->
+  <canvas id="backdrop-canvas"></canvas>
+
+  <!-- Confetti Canvas for Award Ceremonies -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Sound Toggle Float Badge -->
+  <div id="sound-toggle-badge" class="sound-badge active" title="Toggle Sound Chimes (Hotkey: M)">
+    🔊 Sound: ON
+  </div>
+
+  <div class="app-container">
+    
+    <!-- Header -->
+    <header class="stage-header">
+      <div class="header-left">
+        <a href="index.html" class="brand-badge" title="Back to Main Website">
+          <span class="logo-dot"></span>
+          <div class="brand-text">AGENT<span>X</span></div>
+        </a>
+        <div class="event-subtitle">
+          <b>SRMIST Tiruchirappalli</b> · 30 Oct 2026<br>
+          A collaboration of <b>AI</b><i>×</i><b>CSE</b><i>×</i><b>AIFT</b>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="mode-pill">
+          <span class="mode-pill-dot"></span>
+          <span id="mode-pill-text">Welcome Stage &amp; Inauguration</span>
+        </div>
+        
+        <div class="clock-display">
+          <div class="clock-time" id="clock-time">09:45:00</div>
+          <div class="clock-date" id="clock-date">FRI, OCT 30, 2026</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Top Announcement Ticker -->
+    <div class="ticker-container">
+      <div class="ticker-badge">
+        <span class="ticker-beacon"></span>
+        <span>BROADCAST</span>
+      </div>
+      <div class="ticker-content">
+        <div class="ticker-text" id="ticker-text">
+          Welcome to AgentX Challenge 2026 · AI × CSE × AIFT · SRMIST Tiruchirappalli · 6-Hour Sprint Live
+        </div>
+      </div>
+      <button class="btn-secondary" id="dock-announce-btn" style="padding: 0.3rem 0.8rem; font-size: 0.75rem;">
+        📢 Broadcast
+      </button>
+    </div>
+
+
+
+    <!-- Main Dynamic Stage Area -->
+    <main class="stage-content">
+
+      <!-- ==============================================================
+           VIEW 1: WELCOME SCREEN (OFFICIAL CEREMONIAL STAGE BACKDROP)
+           ============================================================== -->
+      <section id="view-welcome" class="view-panel active">
+        <div class="stage-poster formal-backdrop">
+          
+          <!-- SVG Symbol Definition for Corner Fret -->
+          <svg style="display: none;" aria-hidden="true">
+            <symbol id="corner-fret" viewBox="0 0 100 100">
+              <rect width="100" height="100" fill="#ffffff" />
+              <g stroke="#0f172a" stroke-width="2.5" stroke-linecap="square" stroke-linejoin="miter" fill="none">
+                <line x1="8" y1="20" x2="100" y2="20" />
+                <line x1="8" y1="32" x2="100" y2="32" />
+                <line x1="8" y1="48" x2="60" y2="48" />
+
+                <line x1="20" y1="8" x2="20" y2="100" />
+                <line x1="32" y1="8" x2="32" y2="100" />
+                <line x1="48" y1="8" x2="48" y2="60" />
+
+                <line x1="60" y1="20" x2="60" y2="48" />
+                <line x1="20" y1="60" x2="48" y2="60" />
+                <line x1="48" y1="32" x2="60" y2="32" />
+                <line x1="32" y1="48" x2="32" y2="60" />
+              </g>
+            </symbol>
+          </svg>
+
+          <!-- Double Frame Borders & 4 Corner Frets -->
+          <div class="backdrop-outer-border"></div>
+          <div class="backdrop-inner-border"></div>
+          <svg class="backdrop-corner tl" aria-hidden="true"><use href="#corner-fret"/></svg>
+          <svg class="backdrop-corner tr" aria-hidden="true"><use href="#corner-fret"/></svg>
+          <svg class="backdrop-corner bl" aria-hidden="true"><use href="#corner-fret"/></svg>
+          <svg class="backdrop-corner br" aria-hidden="true"><use href="#corner-fret"/></svg>
+
+          <div class="backdrop-content-wrap">
+            
+            <!-- Top Row: SRM Logo (Left) and Industry Partner Logo (Right) -->
+            <div class="backdrop-top-row">
+              <div class="backdrop-logo-left">
+                <img src="assets/srm-logo.jpg" alt="SRM Institute of Science &amp; Technology, Tiruchirappalli" class="backdrop-srm-logo">
+              </div>
+
+              <div class="backdrop-logo-right">
+                <div class="partner-collab-badge">
+                  <span class="collab-badge-label">INDUSTRY COLLABORATION</span>
+                  <div class="partner-logo-box">
+                    <img src="assets/inextlabs-logo.png" alt="iNextLabs" class="backdrop-partner-logo">
+                    <div class="agentx-mini-badge"><span class="ax-dot"></span>AGENT<span class="ax-x">X</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Main Stage Body: Center Invitation + Right Chief Guest Card -->
+            <div class="backdrop-main-grid">
+
+              <!-- Center Primary Column -->
+              <div class="backdrop-center-col">
+                <div class="backdrop-inst-title">SRM INSTITUTE OF SCIENCE &amp; TECHNOLOGY</div>
+                <div class="backdrop-inst-sub">Tiruchirappalli</div>
+                <div class="backdrop-faculty-title">FACULTY OF ENGINEERING &amp; TECHNOLOGY</div>
+                <div class="backdrop-dept-title">DEPARTMENT OF ARTIFICIAL INTELLIGENCE · COMPUTER SCIENCE &amp; ENGINEERING · AIFT</div>
+                
+                <div class="backdrop-invite-lead">The Management, Dean, Faculty, Staff &amp; Students</div>
+                <div class="backdrop-invite-sub">Cordially invite you to the</div>
+                
+                <div class="backdrop-event-inaug">INAUGURATION OF</div>
+                <h1 class="backdrop-event-title">AGENT<span class="x-brand">X</span> CHALLENGE 2026</h1>
+                <div class="backdrop-event-tagline">A Department-Level Agentic AI Hackathon · 6-Hour Autonomous Sprint</div>
+
+                <!-- Hearty Welcome Script & Floral Flourish -->
+                <div class="backdrop-hearty-welcome">Hearty Welcome</div>
+                <div class="backdrop-floral-wrap">
+                  <svg viewBox="0 0 320 60" width="260" height="50" xmlns="http://www.w3.org/2000/svg" class="backdrop-floral-svg" aria-hidden="true">
+                    <g fill="#334155" opacity="0.85">
+                      <!-- Center flower bloom -->
+                      <circle cx="160" cy="30" r="6" fill="#1e293b" />
+                      <path d="M 160,18 C 163,22 165,24 160,26 C 155,24 157,22 160,18 Z" fill="#475569" />
+                      <path d="M 160,42 C 163,38 165,36 160,34 C 155,36 157,38 160,42 Z" fill="#475569" />
+                      <path d="M 148,30 C 152,33 154,35 156,30 C 154,25 152,27 148,30 Z" fill="#475569" />
+                      <path d="M 172,30 C 168,33 166,35 164,30 C 166,25 168,27 172,30 Z" fill="#475569" />
+                      
+                      <!-- Diagonal petals -->
+                      <circle cx="152" cy="22" r="4.5" fill="#475569" />
+                      <circle cx="168" cy="22" r="4.5" fill="#475569" />
+                      <circle cx="152" cy="38" r="4.5" fill="#475569" />
+                      <circle cx="168" cy="38" r="4.5" fill="#475569" />
+
+                      <!-- Left Foliage & Sprigs -->
+                      <path d="M 144,30 Q 120,28 90,34 Q 120,32 144,30 Z" fill="#334155" />
+                      <path d="M 125,28 Q 122,20 115,22 Q 120,27 125,28 Z" fill="#475569" />
+                      <path d="M 110,30 Q 106,38 98,37 Q 105,32 110,30 Z" fill="#475569" />
+                      <path d="M 95,33 Q 90,26 82,29 Q 88,33 95,33 Z" fill="#475569" />
+                      <circle cx="80" cy="34" r="2.5" fill="#334155" />
+                      <circle cx="72" cy="35" r="1.8" fill="#475569" />
+
+                      <!-- Right Foliage & Sprigs -->
+                      <path d="M 176,30 Q 200,28 230,34 Q 200,32 176,30 Z" fill="#334155" />
+                      <path d="M 195,28 Q 198,20 205,22 Q 200,27 195,28 Z" fill="#475569" />
+                      <path d="M 210,30 Q 214,38 222,37 Q 215,32 210,30 Z" fill="#475569" />
+                      <path d="M 225,33 Q 230,26 238,29 Q 232,33 225,33 Z" fill="#475569" />
+                      <circle cx="240" cy="34" r="2.5" fill="#334155" />
+                      <circle cx="248" cy="35" r="1.8" fill="#475569" />
+
+                      <!-- Tiny Floating Hearts / Petals -->
+                      <path d="M 140,16 C 138,12 134,13 134,16 C 134,19 140,22 140,22 C 140,22 146,19 146,16 C 146,13 142,12 140,16 Z" fill="#1e293b" opacity="0.7" />
+                      <path d="M 180,16 C 178,12 174,13 174,16 C 174,19 180,22 180,22 C 180,22 186,19 186,16 C 186,13 182,12 180,16 Z" fill="#1e293b" opacity="0.7" />
+                      <path d="M 154,10 C 153,7 150,8 150,10 C 150,12 154,14 154,14 C 154,14 158,12 158,10 C 158,8 155,7 154,10 Z" fill="#1e293b" opacity="0.6" />
+                      <path d="M 166,10 C 165,7 162,8 162,10 C 162,12 166,14 166,14 C 166,14 170,12 170,10 C 170,8 167,7 166,10 Z" fill="#1e293b" opacity="0.6" />
+                    </g>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Right Column: Chief Guest & Speaker Card -->
+              <div class="backdrop-speaker-col">
+                <div class="backdrop-cg-box">
+                  <div class="backdrop-cg-heading">Chief Guest</div>
+                  
+                  <div class="backdrop-cg-frame">
+                    <img src="assets/chief-guest.jpg" alt="Shri. Dharun Balaji" class="backdrop-cg-img" id="poster-cg-photo">
+                  </div>
+
+                  <div class="backdrop-cg-meta">
+                    <div class="backdrop-cg-name" id="poster-cg-name">Shri. Dharun Balaji</div>
+                    <div class="backdrop-cg-role" id="poster-cg-role">Industry Jury Member</div>
+                    <div class="backdrop-cg-org" id="poster-cg-org">Software &amp; AI Engineer</div>
+                    <div class="backdrop-cg-company">iNextLabs · AgentX 2026</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Bottom Institutional & Event Ribbon -->
+            <div class="backdrop-bottom-row">
+              <div class="backdrop-bottom-left">
+                <b>Date:</b> Friday, 30 October 2026 &nbsp;|&nbsp; <b>Venue:</b> IST 601 (Seminar Hall)
+              </div>
+              <div class="backdrop-bottom-right">
+                <b>SRMIST Tiruchirappalli</b> · A collaboration of <b>AI</b><i>×</i><b>CSE</b><i>×</i><b>AIFT</b>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 2: LIVE HACKATHON COUNTDOWN
+           ============================================================== -->
+      <section id="view-countdown" class="view-panel">
+        <div class="countdown-layout">
+          
+          <div class="timer-hero-box">
+            <div class="timer-stage-title">Sprint Window · In Progress</div>
+            <div class="giant-clock" id="sprint-clock-digits">06:00:00</div>
+            
+            <div class="timer-progress-wrap">
+              <div class="timer-progress-bar" id="sprint-progress-bar" style="width: 0%;"></div>
+            </div>
+
+            <div class="timer-sub-facts">
+              <div>Progress: <b id="sprint-pct-complete">0%</b></div>
+              <div>Build Cap: <b>6 Hours</b></div>
+              <div>Free APIs: <b>Gemini 2.5 Flash &amp; Groq</b></div>
+            </div>
+
+            <!-- Quick on-screen adjustments -->
+            <div style="display: flex; gap: 0.6rem; margin-top: 1.5rem;">
+              <button class="btn-secondary" id="btn-play-pause-timer">▶ Start</button>
+              <button class="btn-secondary" id="btn-minus-5m">-5m</button>
+              <button class="btn-secondary" id="btn-plus-5m">+5m</button>
+              <button class="btn-secondary" id="btn-reset-timer">Reset 6h</button>
+            </div>
+          </div>
+
+          <!-- Roadmap Milestones -->
+          <div class="milestone-container">
+            <div class="milestone-header">
+              <h3>Milestone Tracker</h3>
+              <span>OCT 30</span>
+            </div>
+
+            <div class="milestone-list">
+              <div class="m-item" id="m-inaug">
+                <div class="m-time">09:15</div>
+                <div class="m-text">
+                  <div class="m-title">Inauguration Ceremony</div>
+                  <div class="m-desc">IST 601 Seminar Hall · Dignitaries address</div>
+                </div>
+                <div class="m-tag">Kickoff</div>
+              </div>
+
+              <div class="m-item" id="m-start">
+                <div class="m-time">09:45</div>
+                <div class="m-text">
+                  <div class="m-title">Hackathon Start</div>
+                  <div class="m-desc">Timer begins · 6-Hour autonomous sprint</div>
+                </div>
+                <div class="m-tag">Sprint</div>
+              </div>
+
+              <div class="m-item active" id="m-round1">
+                <div class="m-time">12:00</div>
+                <div class="m-text">
+                  <div class="m-title">First Round Submission</div>
+                  <div class="m-desc">Desk check: 1 working tool call in terminal</div>
+                </div>
+                <div class="m-tag">Round 1</div>
+              </div>
+
+              <div class="m-item" id="m-round2">
+                <div class="m-time">15:00</div>
+                <div class="m-text">
+                  <div class="m-title">Second Round Submission</div>
+                  <div class="m-desc">Code freeze · GitHub push &amp; autonomy check</div>
+                </div>
+                <div class="m-tag">Round 2</div>
+              </div>
+
+              <div class="m-item" id="m-jury">
+                <div class="m-time">15:30</div>
+                <div class="m-text">
+                  <div class="m-title">Jury Judging (Live Demo)</div>
+                  <div class="m-desc">Live demonstration before Shri. Dharun Balaji</div>
+                </div>
+                <div class="m-tag">Jury</div>
+              </div>
+
+              <div class="m-item" id="m-valedictory">
+                <div class="m-time">16:30</div>
+                <div class="m-text">
+                  <div class="m-title">Closing Ceremony &amp; Prizes</div>
+                  <div class="m-desc">Valedictory remarks &amp; prize distribution</div>
+                </div>
+                <div class="m-tag">Awards</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 3: BREAK SCREEN
+           ============================================================== -->
+      <section id="view-break" class="view-panel">
+        <div class="break-box">
+          <div class="break-icon-wrap">🍕</div>
+          <h2>Working Lunch &amp; Recharge</h2>
+          <p>Grab your meal, refuel, and collaborate. Mentors are doing triage rounds at lab benches.</p>
+          
+          <div class="break-timer-display" id="break-clock-digits">45:00</div>
+
+          <div class="break-reminders">
+            <div class="rem-card">
+              <b>Lab Wi-Fi &amp; Hotspots</b>
+              <span>Report connectivity or API key rate limits to roaming mentors immediately.</span>
+            </div>
+            <div class="rem-card">
+              <b>Round 2 Code Freeze (3:00 PM)</b>
+              <span>Second round submission sharp at 15:00. Ensure 2+ tool calls and live autonomy loop are wired.</span>
+            </div>
+            <div class="rem-card">
+              <b>Avoid Wrapper Traps</b>
+              <span>Judges will check your logs for reasoning thoughts, observations, and retries.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 4: PITCH TIMER
+           ============================================================== -->
+      <section id="view-pitch" class="view-panel">
+        <div class="pitch-layout">
+          
+          <div class="pitch-clock-box" id="pitch-clock">
+            <div class="pitch-phase-badge" id="pitch-phase-badge">PHASE: PITCH (3 MIN)</div>
+            <div class="pitch-clock-digits" id="pitch-clock-digits">03:00</div>
+
+            <div class="pitch-phases-bar">
+              <div class="p-step active" data-phase="0">
+                <b>1. Pitch</b>
+                <span>3 mins</span>
+              </div>
+              <div class="p-step" data-phase="1">
+                <b>2. Live Demo</b>
+                <span>2 mins</span>
+              </div>
+              <div class="p-step" data-phase="2">
+                <b>3. Q&amp;A</b>
+                <span>2 mins</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 1.5rem; display: flex; gap: 0.6rem;">
+              <button class="btn-primary" id="btn-pitch-play-pause">▶ Start Stage Timer</button>
+            </div>
+          </div>
+
+          <div class="pitch-team-details">
+            <div class="team-now-card">
+              <span class="label">On Stage Now</span>
+              <h2 id="pitch-current-team">Team NeuralForge</h2>
+              <p id="pitch-current-project">Autonomous Clinical Drug-Interaction ReAct Agent</p>
+            </div>
+
+            <div class="pitch-rubric-mini">
+              <h4>Finale Stage Rubric (100 Points)</h4>
+              <div class="mini-rub-row"><span>Agentic Autonomy &amp; Reasoning</span><b>40 pts</b></div>
+              <div class="mini-rub-row"><span>Domain Problem Impact</span><b>30 pts</b></div>
+              <div class="mini-rub-row"><span>Code Hygiene &amp; Tool Architecture</span><b>20 pts</b></div>
+              <div class="mini-rub-row"><span>Presentation &amp; Technical Q&amp;A</span><b>10 pts</b></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==============================================================
+           VIEW 5: LIVE RESULTS & PODIUM REVEAL
+           ============================================================== -->
+      <section id="view-results" class="view-panel">
+        <div class="results-view-wrap">
+          
+          <!-- Sub-bar -->
+          <div class="results-nav">
+            <div class="results-tab-btns">
+              <button class="res-btn active" id="btn-res-leaderboard">📊 Overall Leaderboard</button>
+              <button class="res-btn" id="btn-res-podium">🏆 Podium Ceremony Reveal</button>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-dim);">
+              All teams competing directly for Top 3 Podium Spots
+            </div>
+          </div>
+
+          <!-- Sub-pane 1: Leaderboard Table -->
+          <div class="results-sub-pane active" id="res-leaderboard">
+            <div class="leaderboard-table-container">
+              <table class="lb-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Team &amp; Agent Project</th>
+                    <th>Round 1</th>
+                    <th>R2 (/50)</th>
+                    <th>Hygiene (/20)</th>
+                    <th>Total (/70)</th>
+                  </tr>
+                </thead>
+                <tbody id="leaderboard-tbody">
+                  <!-- Populated dynamically via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Sub-pane 2: Podium Reveal Ceremony -->
+          <div class="results-sub-pane" id="res-podium">
+            <div class="podium-stage-container">
+              <div class="podium-title">
+                <h2>AgentX Challenge 2026 Podium</h2>
+                <p>Recognizing the top agent builders at SRMIST Tiruchirappalli</p>
+              </div>
+
+              <div class="podium-grid">
+                <!-- Silver (2nd) -->
+                <div class="podium-card silver">
+                  <div>
+                    <div class="podium-trophy">🥈</div>
+                    <div class="podium-place">Runner Up</div>
+                    <div class="podium-prize">₹3,000</div>
+                  </div>
+                  <div>
+                    <div class="podium-team-name" id="podium-silver-name">TBA</div>
+                    <div class="podium-project-title" id="podium-silver-project">Awaiting results</div>
+                    <div class="podium-score-tag" id="podium-silver-score">—</div>
+                  </div>
+                </div>
+
+                <!-- Gold (1st) -->
+                <div class="podium-card gold">
+                  <div>
+                    <div class="podium-trophy">🏆</div>
+                    <div class="podium-place">Grand Champion</div>
+                    <div class="podium-prize">₹5,000</div>
+                  </div>
+                  <div>
+                    <div class="podium-team-name" id="podium-gold-name">TBA</div>
+                    <div class="podium-project-title" id="podium-gold-project">Awaiting results</div>
+                    <div class="podium-score-tag" id="podium-gold-score">—</div>
+                  </div>
+                </div>
+
+                <!-- Bronze (3rd) -->
+                <div class="podium-card bronze">
+                  <div>
+                    <div class="podium-trophy">🥉</div>
+                    <div class="podium-place">Innovator</div>
+                    <div class="podium-prize">₹2,000</div>
+                  </div>
+                  <div>
+                    <div class="podium-team-name" id="podium-bronze-name">TBA</div>
+                    <div class="podium-project-title" id="podium-bronze-project">Awaiting results</div>
+                    <div class="podium-score-tag" id="podium-bronze-score">—</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Smart Board Floating Dock -->
+  <div class="smart-dock">
+    <div class="dock-trigger">DOCK ▾</div>
+    <button class="dock-btn active" data-view="welcome"><kbd>1</kbd> Welcome</button>
+    <button class="dock-btn" data-view="countdown"><kbd>2</kbd> Hackathon</button>
+    <button class="dock-btn" data-view="break"><kbd>3</kbd> Break</button>
+    <button class="dock-btn" data-view="results"><kbd>4</kbd> Results</button>
+    <div class="dock-divider"></div>
+    <button class="dock-btn" id="dock-photo-btn"><kbd>P</kbd> <span>Photo Mode</span></button>
+    <button class="dock-btn" id="dock-fullscreen-btn"><kbd>F</kbd> Fullscreen</button>
+    <a href="backdrop-admin.html" target="_blank" rel="noopener" class="dock-btn dock-link">
+      <span>⚙ Remote Admin</span>
+    </a>
+  </div>
+
+  <div class="photo-mode-hint" id="photo-mode-hint">
+    📸 Stage Backdrop Photo Mode Active · Press 'P' or tap here to restore controls
+  </div>
+
+  <!-- Announcement Quick Modal -->
+  <div class="modal-overlay" id="announcement-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Broadcast Announcement to Smart Board</h3>
+        <button class="modal-close-btn" id="btn-close-modal">&times;</button>
+      </div>
+
+      <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0.75rem;">Click a preset or type below:</p>
+      
+      <div class="preset-chip-list">
+        <div class="preset-chip" data-text="🔔 15 minutes remaining until First Round Submission (12:00 PM)!">
+          15m to Round 1
+        </div>
+        <div class="preset-chip" data-text="🍕 Working lunch is now served at your bench!">
+          Lunch Served
+        </div>
+        <div class="preset-chip" data-text="⚠️ 15 minutes to Second Round Submission &amp; Code Freeze (3:00 PM)!">
+          15m to Round 2
+        </div>
+        <div class="preset-chip" data-text="⚖️ Jury Judging &amp; Live Demonstrations begin at 3:30 PM in IST 601!">
+          Jury Judging Starting
+        </div>
+        <div class="preset-chip" data-text="🏆 Closing Ceremony &amp; Prize Distribution starting at 4:30 PM in IST 601!">
+          Closing Ceremony
+        </div>
+      </div>
+
+      <input type="text" class="modal-input" id="modal-announcement-input" placeholder="Type custom announcement ticker...">
+
+      <div class="modal-actions">
+        <button class="btn-secondary" id="btn-cancel-announcement">Cancel</button>
+        <button class="btn-primary" id="btn-save-announcement">Broadcast Ticker</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/backdrop.js"></script>
+</body>
+</html>

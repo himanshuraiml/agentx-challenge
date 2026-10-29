@@ -1116,3 +1116,188 @@ code { font-family: var(--font-mono); }
 .collab b { font: 700 .85rem var(--font-title); color: var(--text-primary); letter-spacing: 1px; }
 .collab i { color: var(--primary); font-style: normal; }
 .hero-content .hero-tag { display: flex; width: fit-content; }
+
+/* ==========================================================================
+   Jury Section
+   ========================================================================== */
+#jury {
+  position: relative;
+}
+
+.jury-card-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.jury-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.5);
+  transition: var(--transition-normal);
+}
+
+.jury-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary), #38bdf8, transparent);
+}
+
+.jury-card:hover {
+  border-color: rgba(182, 242, 58, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -15px rgba(182, 242, 58, 0.12);
+}
+
+.jury-photo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jury-img-frame {
+  position: relative;
+  width: 240px;
+  height: 270px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(182, 242, 58, 0.3);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4), 0 0 24px rgba(182, 242, 58, 0.15);
+  background: #0a0f18;
+}
+
+.jury-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.jury-card:hover .jury-img {
+  transform: scale(1.03);
+}
+
+.jury-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.75px;
+  text-transform: uppercase;
+  color: #07090d;
+  background: linear-gradient(135deg, var(--primary), #a3e635);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.jury-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.jury-org {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.25rem;
+}
+
+.jury-name {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.jury-title {
+  font-size: 1.05rem;
+  color: #38bdf8;
+  font-weight: 500;
+}
+
+.jury-bio {
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.jury-focus-box {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.1rem 1.35rem;
+  margin-top: 0.25rem;
+}
+
+.jury-focus-title {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  margin-bottom: 0.65rem;
+}
+
+.jury-focus-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.jury-focus-list li {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.jury-focus-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.jury-focus-list b {
+  color: var(--text-primary);
+}
+
+@media (max-width: 840px) {
+  .jury-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    gap: 1.75rem;
+  }
+  .jury-focus-list li {
+    text-align: left;
+  }
+}
+

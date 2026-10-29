@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentX 2026 — Smart Board Admin Remote Console</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    :root { --bg:#07090d; --card:#0f141c; --line:rgba(255,255,255,.08); --mut:#8b95a5; }
+    * { box-sizing: border-box; }
+    body { background: var(--bg); color:#f3f4f6; font-family: var(--font-body); margin:0; padding:1.5rem; min-height:100vh; }
+    .wrap { max-width: 1100px; margin: 0 auto; }
+    header { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; padding-bottom:1.25rem; border-bottom:1px solid var(--line); margin-bottom:1.5rem; }
+    h1 { font-family: var(--font-title); font-size:1.5rem; margin:0; }
+    h1 span { color: var(--primary); }
+    header p { margin:.2rem 0 0; color:var(--mut); font-size:.85rem; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap:1.25rem; }
+    @media (max-width: 800px) { .grid { grid-template-columns: 1fr; } }
+    .card { background: var(--card); border:1px solid var(--line); border-radius:14px; padding:1.25rem; }
+    .card.wide { grid-column: 1 / -1; }
+    .card h2 { font-family: var(--font-title); font-size:1.05rem; margin:0 0 .9rem; display:flex; justify-content:space-between; align-items:center; gap:.5rem; }
+    .hint { color:var(--mut); font-size:.8rem; margin:0 0 .9rem; }
+    .row { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .btn { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); color:#fff; padding:.55rem 1rem; border-radius:8px; font-family: var(--font-title); font-size:.85rem; font-weight:600; cursor:pointer; text-decoration:none; transition:.15s; }
+    .btn:hover { background:rgba(255,255,255,.14); }
+    .btn.primary { background: var(--primary); color:#000; border:none; }
+    .btn.gold { background:#f59e0b; color:#000; border:none; }
+    .btn.danger { color:#f87171; border-color:rgba(239,68,68,.4); background:rgba(239,68,68,.12); }
+    .btn:disabled { opacity:.4; cursor:not-allowed; }
+    .field { width:100%; background:rgba(0,0,0,.4); border:1px solid rgba(255,255,255,.12); border-radius:8px; padding:.6rem .85rem; color:#fff; font-family: var(--font-mono); font-size:.85rem; }
+    .field:focus { outline:none; border-color: var(--primary); }
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; margin-bottom:.75rem; }
+    .badge { font-family: var(--font-mono); font-size:.95rem; color: var(--primary); font-weight:700; }
+    .pills { display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:.75rem; }
+    .pill { background:rgba(255,255,255,.05); border:1px solid var(--line); padding:4px 10px; border-radius:6px; font-size:.75rem; color:var(--mut); cursor:pointer; }
+    .pill:hover { color: var(--primary); border-color: var(--primary); }
+    .dropzone { border:2px dashed rgba(255,255,255,.18); border-radius:12px; padding:1.5rem; text-align:center; cursor:pointer; color:var(--mut); transition:.15s; }
+    .dropzone:hover, .dropzone.over { border-color: var(--primary); color:#fff; background:rgba(182,242,58,.05); }
+    .dropzone b { color:#fff; display:block; margin-bottom:.25rem; }
+    .msg { font-size:.85rem; margin:.75rem 0 0; min-height:1.2em; }
+    .msg.ok { color:#34d399; } .msg.err { color:#f87171; }
+    table { width:100%; border-collapse:collapse; font-size:.85rem; margin-top:1rem; }
+    th, td { padding:.55rem .5rem; border-bottom:1px solid rgba(255,255,255,.05); text-align:left; }
+    th { font-family: var(--font-mono); color:var(--mut); font-size:.72rem; text-transform:uppercase; }
+    td.rank { font-family: var(--font-mono); font-weight:700; color: var(--primary); width:60px; }
+    td.score { font-family: var(--font-mono); font-weight:700; text-align:right; }
+    th.score { text-align:right; }
+    code { background:rgba(255,255,255,.08); padding:1px 5px; border-radius:4px; font-size:.78rem; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>AGENT<span>X</span> Smart Board Console</h1>
+      <p>Control the event-day display and publish results</p>
+    </div>
+    <a href="backdrop.html" target="_blank" rel="noopener" class="btn primary">Open Smart Board ↗</a>
+  </header>
+
+  <div class="grid">
+
+    <!-- Results CSV -->
+    <div class="card wide">
+      <h2><span>📊 Publish Results (CSV)</span><span class="badge" id="result-count">0 teams</span></h2>
+      <p class="hint">Upload the scored sheet or <code>results/leaderboard.csv</code> from the harness (<code>team_id</code>, <code>theme</code>, <code>round1_pass</code>, <code>round2_50</code>, <code>hygiene_20</code>, <code>auto_total_70</code>). Ranked by <code>auto_total_70</code>, highest first. Plain <code>team,project,score</code> files also work.</p>
+      <div class="dropzone" id="drop" role="button" tabindex="0" onclick="$('csv-file').click()" onkeydown="if(event.key==='Enter')$('csv-file').click()">
+        <b>Drop the harness CSV here or click to choose</b>
+        <span id="file-name">No file selected</span>
+      </div>
+      <input type="file" id="csv-file" accept=".csv,text/csv" hidden>
+      <div class="msg" id="csv-msg"></div>
+      <div class="row" style="margin-top:.75rem">
+        <button class="btn primary" id="btn-publish" disabled onclick="publishResults()">Publish to Smart Board</button>
+        <button class="btn gold" onclick="sendView('results','leaderboard')">Show Leaderboard</button>
+        <button class="btn gold" onclick="sendView('results','podium')">🏆 Podium &amp; Confetti</button>
+        <button class="btn danger" onclick="clearResults()">Clear</button>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Rank</th><th>Team</th><th>Theme</th><th>Round 1</th><th class="score">R2 /50</th><th class="score">Hygiene /20</th><th class="score">Total /70</th></tr></thead>
+          <tbody id="results-tbody"><tr><td colspan="7" style="color:var(--mut)">No results loaded.</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Screen switcher -->
+    <div class="card">
+      <h2><span>🖥️ Screen</span><span class="badge" id="current-active-view">—</span></h2>
+      <div class="row">
+        <button class="btn" onclick="sendView('welcome')">Welcome</button>
+        <button class="btn" onclick="sendView('countdown')">Sprint Timer</button>
+        <button class="btn" onclick="sendView('break')">Break</button>
+        <button class="btn" onclick="sendView('pitch')">Pitch Stage</button>
+        <button class="btn" onclick="sendView('results','leaderboard')">Results</button>
+      </div>
+      <div class="row" style="margin-top:.9rem">
+        <button class="btn" onclick="toggleAdminPhotoMode()">📸 Photo Backdrop Mode</button>
+      </div>
+    </div>
+
+    <!-- Chief guest -->
+    <div class="card">
+      <h2><span>🏛️ Chief Guest</span></h2>
+      <div class="two">
+        <input class="field" id="cg-name-input" placeholder="Name" value="Shri. Dharun Balaji">
+        <input class="field" id="cg-role-input" placeholder="Role" value="Industry Jury Member">
+      </div>
+      <button class="btn primary" onclick="updateDignitaries()">Update Poster</button>
+      <div class="msg" id="cg-msg"></div>
+    </div>
+
+    <!-- Sprint timer -->
+    <div class="card">
+      <h2><span>⏱️ Sprint Timer</span><span class="badge" id="admin-timer-display">06:00:00</span></h2>
+      <div class="row">
+        <button class="btn primary" onclick="toggleSprintTimer()">▶ Start / Pause</button>
+        <button class="btn" onclick="adjustSprintTimer(-300)">−5 min</button>
+        <button class="btn" onclick="adjustSprintTimer(300)">+5 min</button>
+        <button class="btn danger" onclick="resetSprintTimer(6)">Reset</button>
+      </div>
+    </div>
+
+    <!-- Ticker -->
+    <div class="card">
+      <h2><span>📢 Ticker</span></h2>
+      <div class="pills">
+        <div class="pill" onclick="pickPreset('🔔 15 minutes remaining until First Round Submission (12:00 PM)!')">Round 1 (12:00)</div>
+        <div class="pill" onclick="pickPreset('🍕 Working lunch is now served at your bench!')">Lunch served</div>
+        <div class="pill" onclick="pickPreset('⚠️ 15 minutes to Second Round Submission &amp; Code Freeze (3:00 PM)!')">Round 2 (15:00)</div>
+        <div class="pill" onclick="pickPreset('⚖️ Jury Judging &amp; Live Demonstrations begin at 3:30 PM in IST 601!')">Jury Judging (15:30)</div>
+        <div class="pill" onclick="pickPreset('🏆 Closing Ceremony &amp; Prize Distribution starting at 4:30 PM in IST 601!')">Closing (16:30)</div>
+      </div>
+      <input class="field" id="admin-announce-input" placeholder="Announcement text" style="margin-bottom:.75rem" value="Welcome to AgentX Challenge 2026 · AI × CSE × AIFT · SRMIST Tiruchirappalli">
+      <div class="row">
+        <button class="btn primary" onclick="broadcastAnnouncement()">Broadcast</button>
+        <button class="btn" onclick="clearAnnouncement()">Reset</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const channel = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('agentx_backdrop_channel') : null;
+  const $ = id => document.getElementById(id);
+  let parsedTeams = [];
+  let timerRemaining = 6 * 3600, timerRunning = false, timerInterval = null;
+
+  function sendPayload(payload) {
+    if (channel) channel.postMessage(payload);
+    try { localStorage.setItem('agentx_backdrop_state', JSON.stringify(payload)); } catch (e) {}
+  }
+
+  function esc(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ---------- CSV results ---------- */
+  function parseCSV(text) {
+    const rows = []; let row = [], cur = '', q = false;
+    text = text.replace(/^\uFEFF/, '');
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (q) {
+        if (c === '"' && text[i+1] === '"') { cur += '"'; i++; }
+        else if (c === '"') q = false;
+        else cur += c;
+      } else if (c === '"') q = true;
+      else if (c === ',') { row.push(cur); cur = ''; }
+      else if (c === '\n' || c === '\r') {
+        if (c === '\r' && text[i+1] === '\n') i++;
+        row.push(cur); cur = '';
+        if (row.some(v => v.trim())) rows.push(row);
+        row = [];
+      } else cur += c;
+    }
+    row.push(cur);
+    if (row.some(v => v.trim())) rows.push(row);
+    return rows;
+  }
+
+  function rowsToTeams(rows) {
+    if (rows.length < 2) throw new Error('CSV needs a header row and at least one team.');
+    const head = rows[0].map(h => h.trim().toLowerCase());
+    const find = names => head.findIndex(h => names.includes(h));
+    const iName = find(['team_id','team','team name','name']);
+    const iProj = find(['project','project title','title','theme']);
+    const iScore = find(['auto_total_70','score','total','total score','marks','points']);
+    const iR1 = find(['round1_pass']), iR2 = find(['round2_50']), iHy = find(['hygiene_20']);
+    const iCap = find(['wrapper_cap_applied','wrapper_cap']), iErr = find(['error']);
+    if (iName < 0 || iScore < 0) throw new Error('Need a team_id (or team) column and an auto_total_70 (or score) column.');
+    const cell = (r, i) => i >= 0 ? (r[i] || '').trim() : '';
+    const num = v => parseFloat(String(v).replace(/[^0-9.\-]/g, ''));
+    const teams = rows.slice(1).map(r => ({
+      name: cell(r, iName), project: cell(r, iProj), score: num(cell(r, iScore)),
+      round1: cell(r, iR1), round2: num(cell(r, iR2)), hygiene: num(cell(r, iHy)),
+      wrapper: /^(yes|true)$/i.test(cell(r, iCap)), error: cell(r, iErr)
+    })).filter(t => t.name && !isNaN(t.score));
+    if (!teams.length) throw new Error('No scored rows found. Run the harness first so auto_total_70 is filled.');
+    return teams.sort((a, b) => b.score - a.score).map((t, i) => ({ ...t, rank: i + 1 }));
+  }
+
+  function renderResults() {
+    $('result-count').textContent = parsedTeams.length + ' teams';
+    $('btn-publish').disabled = !parsedTeams.length;
+    $('results-tbody').innerHTML = parsedTeams.length
+      ? parsedTeams.map(t => `<tr><td class="rank">#${t.rank}</td><td>${esc(t.name)}</td><td>${esc(t.project)}</td><td>${esc(t.round1)}</td><td class="score">${isNaN(t.round2)?'—':t.round2}</td><td class="score">${isNaN(t.hygiene)?'—':t.hygiene}</td><td class="score">${t.score}${t.wrapper?' ⚠':''}</td></tr>`).join('')
+      : '<tr><td colspan="7" style="color:var(--mut)">No results loaded.</td></tr>';
+  }
+
+  function setMsg(el, text, ok) { el.textContent = text; el.className = 'msg ' + (ok ? 'ok' : 'err'); }
+
+  function handleFile(file) {
+    if (!file) return;
+    $('file-name').textContent = file.name;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        parsedTeams = rowsToTeams(parseCSV(reader.result));
+        setMsg($('csv-msg'), `Loaded ${parsedTeams.length} teams, ranked by score. Review, then publish.`, true);
+      } catch (e) {
+        parsedTeams = [];
+        setMsg($('csv-msg'), e.message, false);
+      }
+      renderResults();
+    };
+    reader.readAsText(file);
+  }
+
+  function publishResults() {
+    try { localStorage.setItem('agentx_results', JSON.stringify(parsedTeams)); } catch (e) {}
+    sendPayload({ type: 'STATE_UPDATE', teams: parsedTeams, currentView: 'results', resultsSubView: 'leaderboard', photoMode: false });
+    $('current-active-view').textContent = 'RESULTS';
+    setMsg($('csv-msg'), `Published ${parsedTeams.length} teams to the Smart Board.`, true);
+  }
+
+  function clearResults() {
+    parsedTeams = [];
+    $('csv-file').value = ''; $('file-name').textContent = 'No file selected';
+    try { localStorage.removeItem('agentx_results'); } catch (e) {}
+    $('csv-msg').textContent = '';
+    sendPayload({ type: 'STATE_UPDATE', teams: [] });
+    renderResults();
+  }
+
+  $('csv-file').addEventListener('change', e => handleFile(e.target.files[0]));
+  const drop = $('drop');
+  ['dragover','dragenter'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => handleFile(e.dataTransfer.files[0]));
+
+  /* ---------- Screens ---------- */
+  function sendView(view, sub) {
+    $('current-active-view').textContent = view.toUpperCase();
+    sendPayload({ type: 'STATE_UPDATE', currentView: view, photoMode: false, resultsSubView: sub || (view === 'results' ? 'leaderboard' : undefined) });
+  }
+
+  let photoMode = false;
+  function toggleAdminPhotoMode() {
+    photoMode = !photoMode;
+    $('current-active-view').textContent = photoMode ? 'PHOTO' : 'WELCOME';
+    sendPayload({ type: 'STATE_UPDATE', currentView: 'welcome', photoMode });
+  }
+
+  function updateDignitaries() {
+    sendPayload({ type: 'STATE_UPDATE', dignitaries: { chiefGuest: {
+      name: $('cg-name-input').value, role: $('cg-role-input').value, org: '', topic: ''
+    } } });
+    setMsg($('cg-msg'), 'Poster updated.', true);
+  }
+
+  /* ---------- Timer ---------- */
+  function formatTime(s) {
+    const p = n => String(n).padStart(2, '0');
+    return `${p(Math.floor(s/3600))}:${p(Math.floor(s%3600/60))}:${p(s%60)}`;
+  }
+  function pushTimer() {
+    $('admin-timer-display').textContent = formatTime(timerRemaining);
+    sendPayload({ type: 'STATE_UPDATE', hackathonTimer: { remaining: timerRemaining, isRunning: timerRunning } });
+  }
+  function toggleSprintTimer() {
+    timerRunning = !timerRunning;
+    clearInterval(timerInterval);
+    if (timerRunning) timerInterval = setInterval(() => {
+      if (timerRemaining > 0) { timerRemaining--; $('admin-timer-display').textContent = formatTime(timerRemaining); }
+    }, 1000);
+    pushTimer();
+  }
+  function adjustSprintTimer(d) { timerRemaining = Math.max(0, timerRemaining + d); pushTimer(); }
+  function resetSprintTimer(h) { timerRemaining = h * 3600; timerRunning = false; clearInterval(timerInterval); pushTimer(); }
+
+  /* ---------- Ticker ---------- */
+  function pickPreset(t) { $('admin-announce-input').value = t; }
+  function broadcastAnnouncement() {
+    const t = $('admin-announce-input').value.trim();
+    if (t) sendPayload({ type: 'STATE_UPDATE', announcement: t });
+  }
+  function clearAnnouncement() {
+    $('admin-announce-input').value = '';
+    sendPayload({ type: 'STATE_UPDATE', announcement: 'AgentX Challenge 2026 · SRMIST Tiruchirappalli' });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      const r = JSON.parse(localStorage.getItem('agentx_results') || 'null');
+      if (r && r.length) { parsedTeams = r; setMsg($('csv-msg'), 'Showing previously published results.', true); }
+    } catch (e) {}
+    renderResults();
+  });
+</script>
+</body>
+</html>
